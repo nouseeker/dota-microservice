@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p th:text="'Привет, ' + ${title} + '!'"/>
+<div>
+  <!--  <h3>Selected Heroes</h3>
+    <table style="border:1px solid black">
+        <tr>
+            <td>RadiantTeam</td>
+            <td>wrRadiant</td>
+        </tr>
+        <tr th:each="">
+            <td th:text="${winrates.get()}"></td>
+            <td th:if="${winrates}"></td>
+        </tr>
+    </table>
+    <table style="border:1px solid black">
+        <tr>
+            <td>DireTeam</td>
+            <td>weDire</td>
+        </tr>
+        <tr th:each="dHero:${heroes}">
+            <td th:text="${dHero}"></td>
+        </tr>
+    </table>-->
+
+    <table>
+        <tr>
+            <!--dire team-->
+            <td></td>
+            <td th:text="${heroes.get(5)}"></td>
+            <td></td>
+            <td th:text="${heroes.get(6)}"></td>
+            <td></td>
+            <td th:text="${heroes.get(7)}"></td>
+            <td></td>
+            <td th:text="${heroes.get(8)}"></td>
+            <td></td>
+            <td th:text="${heroes.get(9)}"></td>
+        </tr>
+    </table>
+
+   <!-- <table style="border:1px solid black" th:object="${hero}">
+        <tr th:if="${hero.direTeam.size()==5}">
+            <td>&nbsp;</td>
+            <td  th:text="${hero.direTeam.get(0)}"></td>
+            <td/>
+            <td  th:text="${hero.direTeam.get(1)}"></td>
+            <td/>
+            <td  th:text="${hero.direTeam.get(2)}"></td>
+            <td/>
+            <td  th:text="${hero.direTeam.get(3)}"></td>
+            <td/>
+            <td  th:text="${hero.direTeam.get(4)}"></td>
+            <td text="VALUES"></td>
+
+        </tr>
+        <tr th:if="${hero.radiantTeam.size()==5}">
+            <td th:if="${hero.radiantTeam.size()==5}" th:text="${hero.radiantTeam.get(0)}"/>
+            <td th:text="${id0}"/>
+            <td th:text="${wr0}"/>
+            <td th:text="${id1}"/>
+            <td th:text="${wr1}"/>
+            <td th:text="${id2}"/>
+            <td th:text="${wr2}"/>
+            <td th:text="${id3}"/>
+            <td th:text="${wr3}"/>
+            <td th:text="${id4}"/>
+            <td th:text="${wr4}"/>
+        </tr>
+        <tr>
+            <td th:if="${hero.radiantTeam.size()==5}" th:text="${hero.radiantTeam.get(1)}"/>
+            <td th:text="${id5}"/>
+            <td th:text="${wr5}"/>
+            <td th:text="${id6}"/>
+            <td th:text="${wr6}"/>
+            <td th:text="${id7}"/>
+            <td th:text="${wr7}"/>
+            <td th:text="${id8}"/>
+            <td th:text="${wr8}"/>
+            <td th:text="${id9}"/>
+            <td th:text="${wr9}"/>
+        </tr>
+        <tr>
+            <td th:if="${hero.radiantTeam.size()==5}" th:text="${hero.radiantTeam.get(2)}"/>
+            <td th:text="${id10}"/>
+            <td th:text="${wr10}"/>
+            <td th:text="${id11}"/>
+            <td th:text="${wr11}"/>
+            <td th:text="${id12}"/>
+            <td th:text="${wr12}"/>
+            <td th:text="${id13}"/>
+            <td th:text="${wr13}"/>
+            <td th:text="${id14}"/>
+            <td th:text="${wr14}"/>
+        </tr>
+        <tr>
+            <td th:if="${hero.radiantTeam.size()==5}" th:text="${hero.radiantTeam.get(3)}"/>
+            <td th:text="${id15}"/>
+            <td th:text="${wr15}"/>
+            <td th:text="${id16}"/>
+            <td th:text="${wr16}"/>
+            <td th:text="${id17}"/>
+            <td th:text="${wr17}"/>
+            <td th:text="${id18}"/>
+            <td th:text="${wr18}"/>
+            <td th:text="${id19}"/>
+            <td th:text="${wr19}"/>
+        </tr>
+        <tr>
+            <td th:if="${hero.radiantTeam.size()==5}" th:text="${hero.radiantTeam.get(4)}"/>
+            <td th:text="${id20}"/>
+            <td th:text="${wr20}"/>
+            <td th:text="${id21}"/>
+            <td th:text="${wr21}"/>
+            <td th:text="${id22}"/>
+            <td th:text="${wr22}"/>
+            <td th:text="${id23}"/>
+            <td th:text="${wr23}"/>
+            <td th:text="${id24}"/>
+            <td th:text="${wr24}"/>
+        </tr>
+    </table>
+    <p th:text="${chanceRadiant}"/>
+    <p th:text="${chanceDire}"/>-->
+</div>
+</body>
+</html>

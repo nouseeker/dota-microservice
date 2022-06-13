@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"  href="/static/css/authentication.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <div class="l-header"><a href="../templates/counterpick.html">COUNTER PICK</a></div>
+    <div>LOGO</div>
+    <div class="r-header"><a href="">AUTHORIZATION</a></div>
+</header>
+<form method="post" action="/auth/registration">
+    <p></p>
+    <label>Username</label>
+    <input name="username" type="text" id="username" placeholder="username"/>
+    <label>Email</label>
+    <input name="email" type="text" id="email" placeholder="email"/>
+    <label>Password</label>
+    <input name="password" type="password" id="password" placeholder="password"/>
+    <input type="submit" value="Регистрация">
+</form>
+</body>
+</html>

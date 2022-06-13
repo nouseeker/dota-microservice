@@ -10,8 +10,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+<header>
+    <div class="l-header"><a href="../templates/counterpick.html">COUNTER PICK</a></div>
+    <div class="logo"><img height="100" src="/icons/pudge.png"></div>
+    <div class="r-header"><a href="">AUTHORIZATION</a></div>
+</header>
 <script defer th:src="@{/scripts/Controller.js}"></script>
-<!--   method="post" th:action="@{/selectHero}"     -->
 <div class="main">
     <div style="padding: 5px">
         <div class="selected_heroes" method="get" th:action="@{/selectHero}">
@@ -75,7 +79,7 @@
                         <div class="select-option">
                             <div style="width: 150px">PERIOD</div>
                             <div style="margin:0 auto">
-                                <select class="select-date">
+                                <select id="select-date">
                                     <option selected name="date" value="1">This Week</option>
                                     <option name="date" value="2">This Month</option>
                                     <option name="date" value="3">Last 3 Months</option>
@@ -86,7 +90,7 @@
                     </div>
                     <div id="rank-container">
                         <div class="container">
-                            <div style="width: 160px">
+                            <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Herald.png">
                                 <img class="rank-img" src="/rank/Guardian.png">
                                 <img class="rank-img" src="/rank/Crusader.png">
@@ -96,7 +100,7 @@
                             </label>
                         </div>
                         <div class="container">
-                            <div style="width: 160px">
+                            <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Archon.png">
                             </div>
                             <label  for="r2" class="l-radio">
@@ -104,7 +108,7 @@
                             </label>
                         </div>
                         <div class="container">
-                            <div style="width: 160px">
+                            <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Legend.png">
                             </div>
                             <label for="r3" class="l-radio">
@@ -112,7 +116,7 @@
                             </label>
                         </div>
                         <div class="container">
-                            <div style="width: 160px">
+                            <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Ancient.png">
                             </div>
                             <label for="r4" class="l-radio">
@@ -120,21 +124,21 @@
                             </label>
                         </div>
                         <div class="container">
-                            <div style="width: 160px">
+                            <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Divine.png">
                                 <img class="rank-img" src="/rank/Immortal.png">
                             </div>
                             <label for="r5" class="l-radio">
-                            <input type="radio" id="r5" name="selRank" class="rank-selection" value="0">
+                            <input type="radio" id="r5" name="selRank" checked class="rank-selection" value="0">
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="analyze-container">
                     <div class="select-option" style="position: relative;width: 550px">
-                        <div style="width: 100px; color: white">DEFAULT
+                        <div style="width: 100px; color: white; padding: 5px">DEFAULT
                         </div>
-                        <div><input type="checkbox" id="defCh" name="scales" checked value="1"></div>
+                        <div style="padding-top: 5px"><input type="checkbox" id="defCh" name="scales" checked value="1"></div>
                         <button id="analyze" onclick="analyze()">RESULT</button>
                     </div>
                 </div>

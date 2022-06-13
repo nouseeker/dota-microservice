@@ -1,62 +1,59 @@
 package com.example.dota.controllers;
 
-import com.example.dota.Piker.Hero;
-import com.example.dota.Piker.Parse;
+import com.example.dota.model.History;
+import com.example.dota.piker.HeroList;
+import com.example.dota.piker.Parse;
+import com.example.dota.service.HistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Controller
 public class MainController {
-    Hero hero = new Hero();
+    @Autowired
+    private HistoryService historyService;
 
-    Parse parse = new Parse();
-    double chanceRadiant=0.0;
-    List<String> heroes=new ArrayList<>(hero.getArrayList());
-
-    @GetMapping("/")
+    @GetMapping("/counterpick")
     public String greeting(Model model) {
-        model.addAttribute("heroes", heroes);
-        model.addAttribute("wrHeroes", parse.getHeroWr());
-        model.addAttribute("rHeroes", hero.getRadiantTeam());
-        model.addAttribute("dHeroes", hero.getDireTeam());
-        model.addAttribute("parse", parse);
-        model.addAttribute("hero", hero);
-        if(hero.selectedHeroes()){
-        for (int i = 0; i < 25; i++) {
-            model.addAttribute("id"+String.valueOf(i), parse.getValsById(i));
-            model.addAttribute("wr"+String.valueOf(i), parse.getWrById(i));
-            chanceRadiant = chanceRadiant + Double.parseDouble(parse.getWrById(i).substring(0,5));
-        }
-        model.addAttribute("chanceRadiant", "Radiant team have: "+(String.format("%.2f",chanceRadiant-1250))+"% to win");
-        model.addAttribute("chanceDire", "Dire team have: "+(1250-chanceRadiant)+"% to win");
-        }
-        return "home";
+        model.addAttribute("heroes", new HeroList().getAllNameHeroes());
+        return "counterpick";
     }
 
-    @PostMapping( "/selectHero")
-    public String s(@RequestParam(value = "hero", required = false) String name, Model model) {
-            if(hero.getRadiantCount()<5){
-                hero.addRadiantTeam(name);
-            }
-            else if(hero.getDireCount()<5){
-                hero.addDireTeam(name);
-            }
-            if(hero.selectedHeroes()){
-                parse.parseValue(hero.getRadiantTeam(), hero.getDireTeam());
-            }
-            System.out.println(name);
-            heroes.remove(name);
+    @PostMapping("/selectHero")
+    public String heroController(@RequestParam(value = "heroes", required = false) String[] id
+                                 /*@RequestParam(value = "defCh", required = false) int def,
+                                 @RequestParam(value = "rankCh", required = false) int rank,
+                                 @RequestParam(value = "roleCh", required = false) int role,
+                                 @RequestParam(value = "date", required = false) int date*/) {
 
-        return "redirect:/";
+        historyService.saveHistory(new History(id[0],
+                id[1],id[2],id[3],id[4],id[5],id[6],id[7],id[8],id[9]))
+        System.out.println("Основной поток");
+        /*Thread second = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Parse.INSTANCE.counterParse(heroesID);
+            }
+        });
+        second.start();*/
+
+        Parse.INSTANCE.wrParse(heroesID);
+        Parse.INSTANCE.counterParse(heroesID);
+        return "statistic";
     }
-
+  @GetMapping("/statistic")
+    public String stats(Model model){
+      model.addAttribute("heroes",heroesID);
+      model.addAttribute("winrates",Parse.INSTANCE.getWinrates());
+      model.addAttribute("counters",Parse.INSTANCE.getCounters());
+        return "statistic";
+    }
 
 
 }
