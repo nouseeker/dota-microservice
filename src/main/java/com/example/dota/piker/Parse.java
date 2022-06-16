@@ -1,22 +1,18 @@
 package com.example.dota.piker;
 
-import com.example.dota.model.Hero;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public enum Parse{
     INSTANCE;
     Document doc;
-    List<String> counters;
-    List<String> winrates;
+    String[] counters;
+    String[] winrates;
     volatile String connect;
     String name, verylow, low, medium, high, veryhigh = "";
-    Hero hero = new Hero();
 
     public void setConnection(String url) {
         try {
@@ -41,35 +37,36 @@ public enum Parse{
         return hero.updateHero(name, verylow, low, medium, high, veryhigh);
     }*/
 
-    public void wrParse(int id[]){
+    public void wrParse(String[] id){
         setConnection("https://www.dotabuff.com/heroes/winning");
-        winrates = new ArrayList<>();
+        winrates = new String[10];
         Element tbody = doc.select("tbody").first();
         for (int i = 0; i < 10; i++) {
-           winrates.add(tbody.getElementsByAttributeValue("href", "/heroes/" + id[i])
+           winrates[i]=(tbody.getElementsByAttributeValue("href", "/heroes/" + id[i])
                     .first().parent().parent().parent()
                     .child(2)
                     .text());
         }
     }
 
-    public void counterParse(int id[]){
-        counters = new ArrayList<>();
+    public void counterParse(String[] id){
+        counters = new String[25];
+        int k =0;
         for (int i = 0; i < 5; i++) {
             setConnection("https://www.dotabuff.com/heroes/" + id[i] + "/counters");
             Element tbody = doc.select("tbody").last();
             for (int j = 0; j < 5; j++) {
-                counters.add(tbody.getElementsByAttributeValue("href", "/heroes/" + id[j+5])
+                counters[k++]=(tbody.getElementsByAttributeValue("href", "/heroes/" + id[j+5])
                         .first().parent().parent().parent()
                         .child(3)
                         .text());
             }
         }
     }
-    public List<String> getCounters(){
+    public String[] getCounters(){
         return counters;
     }
-    public List<String> getWinrates(){
+    public String[] getWinrates(){
         return winrates;
     }
 

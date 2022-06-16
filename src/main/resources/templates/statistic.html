@@ -29,18 +29,23 @@
     </table>-->
 
     <table>
-        <tr>
+        <tr th:object="${heroes}">
             <!--dire team-->
             <td></td>
-            <td th:text="${heroes.get(5)}"></td>
+            <td th:text="${heroes[0]}"></td>
+            <img th:src="@{'icons/id ('+${images.indexOf(heroes[0])+1}+').png'}" height="30">
             <td></td>
-            <td th:text="${heroes.get(6)}"></td>
+            <td th:text="${heroes[1]}"></td>
+            <img th:src="@{'icons/id ('+${images.indexOf(heroes[1])+1}+').png'}" height="30">
             <td></td>
-            <td th:text="${heroes.get(7)}"></td>
+            <td th:text="${heroes[2]}"></td>
+            <img th:src="@{'icons/id ('+${images.indexOf(heroes[2])+1}+').png'}" height="30">
             <td></td>
-            <td th:text="${heroes.get(8)}"></td>
+            <td th:text="${heroes[3]}"></td>
+            <img th:src="@{'icons/id ('+${images.indexOf(heroes[3])+1}+').png'}" height="30">
             <td></td>
-            <td th:text="${heroes.get(9)}"></td>
+            <td th:text="${heroes[4]}"></td>
+            <img th:src="@{'icons/id ('+${images.indexOf(heroes[4])+1}+').png'}" height="30">
         </tr>
     </table>
 

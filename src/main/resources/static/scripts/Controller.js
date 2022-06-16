@@ -100,9 +100,9 @@ function post(text) {
         url: 'selectHero',
         data: text,
         success: function () {
+            window.location = "/statistic";
         }
     })
-    window.location = "/auth/login";
 }
 
 function showRole() {
