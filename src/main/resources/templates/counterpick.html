@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${title}"/>
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/counterpick.css}" href="/static/css/counterpick.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet"/>
@@ -11,14 +11,15 @@
 </head>
 <body>
 <header>
-    <div class="l-header"><a href="../templates/counterpick.html">COUNTER PICK</a></div>
+    <div class="l-header"><a href="/counterpick.html">COUNTER PICK</a></div>
     <div class="logo"><img height="100" src="/icons/pudge.png"></div>
+    <div class="r-header"><a href="" th:text="${name}"></a></div>
     <div class="r-header"><a href="">AUTHORIZATION</a></div>
 </header>
 <script defer th:src="@{/scripts/Controller.js}"></script>
 <div class="main">
-    <div style="padding: 5px">
-        <div class="selected_heroes" method="get" th:action="@{/selectHero}">
+    <div style="padding: 5px;margin-bottom: 10px">
+        <div class="selected_heroes">
             <div class="team">
                 <p class="rp">RADIANT</p>
                 <div style="display: flex;justify-content: center;">
@@ -146,9 +147,13 @@
                 </div>
     </div>
             <div>
+                <div class = "form_input">
+                    <input id="elastic" autocomplete="off" placeholder="HERO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'HERO'"/></label>
+                </div>
                 <div class="hero_overview">
-                    <div class="hero" th:each="hero: ${heroes}">
-                        <img class="img_hero" th:src="@{${'icons/id ('+(heroes.indexOf(hero)+1)+').png'}}">
+                    <div class="hero" th:each="hero: ${heroes}" th:name="${hero}">
+                        <span th:text="${hero}" style="text-indent: -9999px;white-space: nowrap;"></span>
+                        <img class="img_hero" th:src="@{'icons/id ('+${(heroes.indexOf(hero)+1)}+').png'}">
                         <button class="inp_radiant" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}"
                                 name="radiant"/>
                         <button class="inp_dire" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}" name="dire"/>

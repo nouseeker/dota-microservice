@@ -158,7 +158,12 @@ public class HeroList{
         return null;
     }
 
+    public List<String> getAllLinkHeroes() {
+        return allLinkHeroes;
+    }
+
     public List<String> getAllNameHeroes() {
+
         return allLinkHeroes;
     }
 }

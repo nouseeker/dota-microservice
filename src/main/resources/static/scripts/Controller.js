@@ -20,6 +20,29 @@ var rank = 0;
 var period = selectCh.options[selectCh.selectedIndex].value;
 let radiantPlace = document.querySelector(".radiant-placeholder");
 let direPlace = document.querySelector(".dire-placeholder");
+let hero;
+let elasticItem = Array.from(document.querySelectorAll(".hero_overview div"));
+let elastic = document.getElementById("elastic");
+elastic.oninput = function () {
+    hero = this.value.trim().toLowerCase();
+    if (hero != "") {
+        elasticItem.forEach(function (elem) {
+            if (elem.innerText.toLowerCase().indexOf((hero)) <0) {
+                elem.classList.add("hide");
+            }
+            else {
+                elem.classList.remove("hide");
+            }
+        })
+    } else {
+        removeHidden();
+    }
+}
+function removeHidden(){
+    elasticItem.forEach(function (elem) {
+        elem.classList.remove("hide");
+    })
+}
 
 function addHero() {
     if (this.name == "radiant" && (r < 5)) {
@@ -29,6 +52,9 @@ function addHero() {
         d++;
         createButton(this);
     }
+    elastic.value = "";
+    elastic.focus();
+    removeHidden();
 }
 
 function createButton(hero) {
@@ -70,22 +96,21 @@ function analyze() {
     if ((d == 5) && (r == 5)) {
         var text = "heroes=";
         for (let i = 0; i < 5; i++) {
-            text = text + radiantPlace.querySelectorAll("button")[i].value +","
+            text = text + radiantPlace.querySelectorAll("button")[i].value + ","
         }
         for (let i = 0; i < 4; i++) {
-            text = text + direPlace.querySelectorAll("button")[i].value +","
+            text = text + direPlace.querySelectorAll("button")[i].value + ","
         }
         text = text + direPlace.querySelectorAll("button")[4].value
-        if (def==0){
-            if (role==1){
+        if (def == 0) {
+            if (role == 1) {
                 text = text + "&roleCh=1"
             }
-            if (rank==1){
-                text = text +"&rankCh=1"
+            if (rank == 1) {
+                text = text + "&rankCh=1"
             }
-            text = text + "&date="+period;
-        }
-        else{
+            text = text + "&date=" + period;
+        } else {
             text = text + "&defCh=1"
         }
         post(text)
@@ -97,7 +122,7 @@ function analyze() {
 function post(text) {
     $.ajax({
         type: 'POST',
-        url: 'selectHero',
+        url: '/selectHero',
         data: text,
         success: function () {
             window.location = "/statistic";
@@ -129,7 +154,7 @@ function showOption() {
         elem.style.pointerEvents = "visible"
         elem.style.opacity = "1"
         this.value = 0;
-        def =0;
+        def = 0;
 
     }
 }

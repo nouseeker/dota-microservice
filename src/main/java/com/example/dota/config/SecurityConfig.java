@@ -1,9 +1,12 @@
 package com.example.dota.config;
 
+import com.example.dota.model.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -32,10 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/statistic").permitAll()
-                    .antMatchers("/auth/registration").permitAll()
-                   //.antMatchers("/auth/registration").permitAll()
+                    .antMatchers("/css/**", "/scripts/**", "/wallpaper/**", "/icons/**").permitAll()
+                    .antMatchers("/auth/registration","/counterpick").permitAll()
+                    .antMatchers(HttpMethod.GET,"/api/**").hasAuthority(Permission.DEVELOPERS_READ.getPermission())
+                    .antMatchers(HttpMethod.POST,"/api/**").hasAuthority(Permission.DEVELOPERS_WRITE.getPermission())
+                    .antMatchers(HttpMethod.DELETE,"/api/**").hasAuthority(Permission.DEVELOPERS_WRITE.getPermission())
                     .anyRequest()
                     .authenticated()
                 .and()
@@ -44,16 +48,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/counterpick")
                 .and()
                     .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout","POST"))
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout", "GET"))
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .deleteCookies("JSESSIONID")
                     .logoutSuccessUrl("/auth/login");
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
