@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service(   "userDetailsServiceImpl")
+@Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
@@ -25,22 +25,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(()->
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
                 new UsernameNotFoundException("User doesn't exists"));
         return SecurityUser.fromUser(user);
     }
 
     public boolean saveUser(User user) {
-        System.out.println("Trying to save user");
         Optional<User> userFromDB = userRepository.findByEmail(user.getEmail());
-        if (!userFromDB.isEmpty()){
+        if (!userFromDB.isEmpty()) {
             return false;
         }
         user.setRole(Role.USER);
         user.setStatus(Status.ACTIVE);
         user.setPassword(new BCryptPasswordEncoder(12).encode(user.getPassword()));
         userRepository.save(user);
-        System.out.println("User was saved!");
         return true;
     }
 

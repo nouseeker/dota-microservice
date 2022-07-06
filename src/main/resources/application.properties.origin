@@ -1,0 +1,10 @@
+spring.datasource.url=
+spring.datasource.driver-class-name=
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.open-in-view=
+server.port=
+
+jwt.header=
+jwt.secret=
+jwt.expiration=

@@ -1,0 +1,290 @@
+#rank-container{
+    width: 100%;
+    position: relative;
+}
+.information {
+    display: flex;
+}
+.container{
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid white;
+}
+.l-radio {
+    position: absolute;
+    right: 0;
+}
+.rank-img{
+    height: 43px;
+    margin: 2px;
+}
+#analyze {
+    position: absolute;
+    right: 0;
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    color: #000000;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 1px solid white;
+    transition: all 0.3s;
+}
+#analyze:hover{
+    background-color: #000000;
+    color: white;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+.rp,.dp{
+    font-size: 40px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+}
+.rp{
+    color: green;
+    margin:0;
+}
+.dp{
+    margin:0;
+    color: #8c0f0f;
+}
+.analyze-container{
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    height: 55px;
+    /* background: -webkit-linear-gradient(left, rgb(255, 255, 255) 20%, rgb(0,0,0,0) 80%);*/
+    border-top: 1px solid white;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+
+}
+#options {
+    display: flex;
+    color: white;
+    width: 560px;
+    pointer-events: none;
+    opacity:0.3;
+    font-family: 'Kanit', sans-serif;
+
+}
+.team,#options{
+    position: relative;
+}
+.selected_heroes {
+    display: flex;
+}
+.select-option {
+    display: flex;
+    height: 50px;
+}
+.team{
+    width: 200px;
+    text-align: center;
+    display: table;
+    border-right: 1px solid white;
+}
+p{
+    color: white;
+    font-family: 'Kanit', sans-serif;
+}
+.blocked{
+    display: none;
+}
+#direRole, #radiantRole{
+    display: none;
+}
+.hero-placeholder,.role-selection {
+    background: rgb(255, 255, 255);
+    height: 35px;
+    width: 70px;
+    margin: 5px;
+    position: relative;
+}
+.hero_overview {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    position: relative;
+}
+.radiant_team,.dire_team{
+    display: flex;
+}
+#select-date {
+    font-family: 'Kanit', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: 500ms;
+    border: none;
+    position: relative;
+    outline: none;
+    padding: 1px;
+    font-weight: bold;
+}
+.select-date option {
+    background-color: #c9c4c4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hero{
+    background: transparent;
+    margin: 5px 5px 5px 0;
+    height: 35px;
+    width: 50px;
+    display: flex;
+    position: relative;
+    transition: all 200ms;
+    z-index: 0;
+}
+
+.hero:hover{
+    z-index: 1;
+    transform: scale(1.5);
+    transition: all 200ms;
+}
+.inp_dire:hover,.inp_radiant:hover {
+    opacity: .7;
+}
+.hero_overview div.hide{
+   opacity: 0.25;
+    pointer-events: none;
+}
+.form_input{
+    width: 200px;
+    margin: 0 auto;
+}
+#elastic {
+    font-family: 'Kanit', sans-serif;
+    color: white;
+    text-align: center;
+    outline: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    border-bottom: 1px solid #737171;
+    background-color: transparent;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+#elastic:hover {
+    border-bottom: 1px solid white;
+    transition: 0.3s;
+}
+#elastic:focus{
+    transition: opacity 0.3s ease;
+}
+.img_hero {
+    margin: -1px;
+    border:1px solid white;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+.button_hero {
+    outline: none;
+    transition: 0.1s;
+    height: 35px;
+    width: 70px;
+    padding: 0px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+.button_hero:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+.inp_radiant,
+.inp_dire {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    width: 25px;
+    border: none;
+    outline: none;
+    display: flex;
+    height: inherit;
+}
+.inp_dire{
+    right: 0;
+    background-color: #8c0f0f;
+}
+.inp_radiant{
+    background-color: green;
+}
+input[type=checkbox] {
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 15px;
+    height: 12px;
+    position: relative;
+    border: 1px solid black;
+}
+
+input[type=checkbox]:after {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 0;
+    content: " ";
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000000;
+    display: inline-block;
+    visibility: visible;
+    padding: 0px 3px;
+    border: 1px solid black;
+}
+
+input[type=checkbox]:checked:after {
+    content: "✓";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+.rank-selection {
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 15px;
+    height: 12px;
+    position: relative;
+    border: 1px solid #000000;
+
+}
+
+.rank-selection:after {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 0;
+    content: " ";
+    background-color: #ffffff;
+    color: #000000;
+    display: inline-block;
+    visibility: visible;
+    padding: 0px 3px;
+}
+
+.rank-selection:checked:before {
+    content: "✓";
+    display: block;
+    position: relative;
+    top: -2px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    color: #000000;
+    font-weight: bold;
+    z-index: 1;
+}

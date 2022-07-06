@@ -14,8 +14,9 @@ import java.util.List;
 public class SecurityUser implements UserDetails {
     private final String username;
     private final String password;
-    private final List<SimpleGrantedAuthority> authorities ;
+    private final List<SimpleGrantedAuthority> authorities;
     private final boolean isActive;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -50,9 +51,10 @@ public class SecurityUser implements UserDetails {
     public boolean isEnabled() {
         return isActive;
     }
-    public static UserDetails fromUser(User user){
+
+    public static UserDetails fromUser(User user) {
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),user.getPassword(),
+                user.getEmail(), user.getPassword(),
                 user.getStatus().equals(Status.ACTIVE),
                 user.getStatus().equals(Status.ACTIVE),
                 user.getStatus().equals(Status.ACTIVE),

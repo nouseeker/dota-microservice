@@ -11,11 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<header>
-    <div class="l-header"><a href="../templates/counterpick">COUNTER PICK</a></div>
-    <div class="logo"><img height="100" src="/icons/pudge.png"></div>
-    <div class="r-header"><a href="">AUTHORIZATION</a></div>
-</header>
+<th:block th:insert="blocks/header :: header"></th:block>
 <div class="main">
     <div>
         <div style="display: flex;margin: 0 auto;position: relative">
@@ -74,7 +70,7 @@
                 </div>
                 <!--CONCLUSION-->
                 <div class="conclusion">
-                    <p th:text="${(teamChance>0?('Radiant have a '+ teamChance):('Dire have a '+ (-teamChance)))+'% chance to win'}"></p>
+                    <p th:text="${(teamChance>0?('Radiant have a '+ teamChance/2):('Dire have a '+ (-teamChance/2)))+'% chance to win'}"></p>
                 </div>
                 <div style="text-align: center">
                     <button id="back" onclick="location.href='/counterpick'">BACK</button>
@@ -112,22 +108,22 @@
             <!--Dire team-->
             <td>HEROES</td>
             <td colspan="2">
-                <img th:src="@{'icons/id ('+${images.indexOf(heroes[5])+1}+').png'}" class="img_hero"></td>
+                <img th:src="@{'icons/id ('+${images.indexOf(heroes[5])+1}+').png'}" class="radiant_img_hero"></td>
             <td colspan="2">
-                <img th:src="@{'icons/id ('+${images.indexOf(heroes[6])+1}+').png'}" class="img_hero"></td>
+                <img th:src="@{'icons/id ('+${images.indexOf(heroes[6])+1}+').png'}" class="radiant_img_hero"></td>
             <td colspan="2">
-                <img th:src="@{'icons/id ('+${images.indexOf(heroes[7])+1}+').png'}" class="img_hero"></td>
+                <img th:src="@{'icons/id ('+${images.indexOf(heroes[7])+1}+').png'}" class="radiant_img_hero"></td>
             <td colspan="2">
-                <img th:src="@{'icons/id ('+${images.indexOf(heroes[8])+1}+').png'}" class="img_hero"></td>
+                <img th:src="@{'icons/id ('+${images.indexOf(heroes[8])+1}+').png'}" class="radiant_img_hero"></td>
             <td colspan="2">
-                <img th:src="@{'icons/id ('+${images.indexOf(heroes[9])+1}+').png'}" class="img_hero"></td>
+                <img th:src="@{'icons/id ('+${images.indexOf(heroes[9])+1}+').png'}" class="radiant_img_hero"></td>
             <td>CHANCE</td>
             </tr>
 
 
             <!--Radiant team-->
             <tr>
-                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[0])+1}+').png'}" class="img_hero"></td>
+                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[0])+1}+').png'}" class="dire_img_hero"></td>
                 <td th:text="${counters[0] +'%'}"
                     th:style="${counters[0]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[0]}" th:style="${disadvantage[0]>0 ? 'color:green':'color:red'}"></td>
@@ -148,7 +144,7 @@
 
             </tr>
             <tr>
-                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[1])+1}+').png'}" class="img_hero"></td>
+                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[1])+1}+').png'}" class="dire_img_hero"></td>
                 <td th:text="${counters[5] +'%'}"
                     th:style="${counters[5]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[5]}" th:style="${disadvantage[5]>0 ? 'color:green':'color:red'}"></td>
@@ -170,7 +166,7 @@
 
             </tr>
             <tr>
-                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[2])+1}+').png'}" class="img_hero"></td>
+                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[2])+1}+').png'}" class="dire_img_hero"></td>
                 <td th:text="${counters[10] +'%'}"
                     th:style="${counters[10]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[10]}" th:style="${disadvantage[10]>0 ? 'color:green':'color:red'}"></td>
@@ -192,7 +188,7 @@
 
             </tr>
             <tr>
-                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[3])+1}+').png'}" class="img_hero"></td>
+                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[3])+1}+').png'}" class="dire_img_hero"></td>
                 <td th:text="${counters[15] +'%'}"
                     th:style="${counters[15]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[15]}" th:style="${disadvantage[15]>0 ? 'color:green':'color:red'}"></td>
@@ -214,7 +210,7 @@
 
             </tr>
             <tr>
-                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[4])+1}+').png'}" class="img_hero"></td>
+                <td><img th:src="@{'icons/id ('+${images.indexOf(heroes[4])+1}+').png'}" class="dire_img_hero"></td>
                 <td th:text="${counters[20] +'%'}"
                     th:style="${counters[20]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[20]}" th:style="${disadvantage[20]>0 ? 'color:green':'color:red'}"></td>

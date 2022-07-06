@@ -3,10 +3,6 @@ let buttons = document.querySelector(".hero_overview").querySelectorAll("button"
 for (var i = 0, len = buttons.length; i < len; i++) {
     buttons[i].addEventListener("click", addHero);
 }
-let roleCh = document.getElementById("roleCh")
-roleCh.addEventListener("click", showRole);
-let rankCh = document.getElementById("rankCh")
-rankCh.addEventListener("click", showRank);
 let defCh = document.getElementById("defCh")
 defCh.addEventListener("click", showOption);
 let selectCh = document.getElementById("select-date")
@@ -53,7 +49,7 @@ function addHero() {
         createButton(this);
     }
     elastic.value = "";
-    elastic.focus();
+    //elastic.focus();
     removeHidden();
 }
 
@@ -103,23 +99,17 @@ function analyze() {
         }
         text = text + direPlace.querySelectorAll("button")[4].value
         if (def == 0) {
-            if (role == 1) {
-                text = text + "&roleCh=1"
-            }
-            if (rank == 1) {
-                text = text + "&rankCh=1"
-            }
             text = text + "&date=" + period;
         } else {
             text = text + "&defCh=1"
         }
-        post(text)
+        postHeroes(text)
     } else {
         this.preventDefault();
     }
 }
 
-function post(text) {
+function postHeroes(text) {
     $.ajax({
         type: 'POST',
         url: '/selectHero',
@@ -130,42 +120,22 @@ function post(text) {
     })
 }
 
-function showRole() {
-    if (this.checked) {
-        document.getElementById("radiantRole").style.display = "table";
-        document.getElementById("direRole").style.display = "table";
-        role = 1;
-    } else {
-        document.getElementById("radiantRole").style.display = "none";
-        document.getElementById("direRole").style.display = "none";
-        role = 0;
-
-    }
-}
 
 function showOption() {
     let elem = document.getElementById("options");
     if (this.checked) {
+        rank = 1;
         elem.style.pointerEvents = "none"
         elem.style.opacity = "0.3"
-        this.value = 1;
         def = 1;
+        this.value = 1;
     } else {
         elem.style.pointerEvents = "visible"
         elem.style.opacity = "1"
-        this.value = 0;
-        def = 0;
-
-    }
-}
-
-function showRank() {
-    if (this.checked) {
-        document.getElementById("rank-container").style.display = "table";
-        rank = 1;
-    } else {
-        document.getElementById("rank-container").style.display = "none";
         rank = 0;
+        def = 0;
+        this.value = 0;
+
     }
 }
 

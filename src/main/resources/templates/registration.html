@@ -11,12 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<header>
-    <div class="l-header"><a href="/counterpick">COUNTER PICK</a></div>
-    <div class="logo"><img height="100" src="/icons/pudge.png"></div>
-    <div class="r-header"><a href="">AUTHORIZATION</a></div>
-</header>
-
+<th:block th:insert="blocks/header :: header"></th:block>
 <form method="post" th:action="@{/auth/registration}" th:object="${user}" class="form">
     <h1 id="login">REGISTRATION</h1>
     <div class = "form_group">

@@ -9,11 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<header>
-    <div class="l-header"><a href="/counterpick.html">COUNTER PICK</a></div>
-    <div class="logo"><img height="100" src="/icons/pudge.png"></div>
-    <div class="r-header"><a href="">AUTHORIZATION</a></div>
-</header>
+<th:block th:insert="blocks/header :: header"></th:block>
 <script defer th:src="@{/scripts/authentication.js}"></script>
 <form method="post" action="/auth/login" class="form">
     <h1 id="login">LOGIN</h1>

@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>DOTA 2 COUNTER PICKER</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css">
     <link rel="stylesheet" th:href="@{/css/counterpick.css}" href="/static/css/counterpick.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,17 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer th:src="@{/scripts/Controller.js}"></script>
 </head>
 <body>
-<header>
-    <div class="l-header"><a href="/counterpick.html">COUNTER PICK</a></div>
-    <div class="logo"><img height="100" src="/icons/pudge.png"></div>
-    <div class="r-header"><a href="" th:text="${name}"></a></div>
-    <div class="r-header"><a href="">AUTHORIZATION</a></div>
-</header>
-<script defer th:src="@{/scripts/Controller.js}"></script>
+<th:block th:insert="blocks/header :: header"></th:block>
 <div class="main">
-    <div style="padding: 5px;margin-bottom: 10px">
+    <div style="margin-bottom: 10px">
         <div class="selected_heroes">
             <div class="team">
                 <p class="rp">RADIANT</p>
@@ -30,14 +26,6 @@
                         <button class="hero-placeholder" id="hero3"></button>
                         <button class="hero-placeholder" id="hero4"></button>
                         <button class="hero-placeholder" id="hero5"></button>
-                    </div>
-                    <div id="radiantRole">
-                        <p>Role</p>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
                     </div>
                 </div>
             </div>
@@ -52,31 +40,11 @@
                         <button class="hero-placeholder" ></button>
                         <button class="hero-placeholder" ></button>
                     </div>
-                    <div id="direRole">
-                        <p>Role</p>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                        <div class="role-selection"></div>
-                    </div>
                 </div>
             </div>
             <div style="display: table; position:relative;">
                 <div id="options">
                     <div style="padding: 5px; display: table">
-                        <div class="select-option">
-                            <div style="width: 150px">ENABLE ROLE</div>
-                            <div style="margin:0 auto">
-                                <input type="checkbox" name="role" id="roleCh" value="0">
-                            </div>
-                        </div>
-                        <div class="select-option">
-                            <div style="width: 150px">SEARCH BY RANK</div>
-                            <div style="margin:0 auto" >
-                                <input type="checkbox" name="rank" id="rankCh" value="0">
-                            </div>
-                        </div>
                         <div class="select-option">
                             <div style="width: 150px">PERIOD</div>
                             <div style="margin:0 auto">
@@ -124,13 +92,13 @@
                                 <input type="radio" id="r4" name="selRank" class="rank-selection">
                             </label>
                         </div>
-                        <div class="container">
+                        <div class="container" style="border-bottom: 0px">
                             <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Divine.png">
                                 <img class="rank-img" src="/rank/Immortal.png">
                             </div>
                             <label for="r5" class="l-radio">
-                            <input type="radio" id="r5" name="selRank" checked class="rank-selection" value="0">
+                            <input type="radio" id="r5" name="selRank" class="rank-selection" value="0">
                             </label>
                         </div>
                     </div>
@@ -162,5 +130,6 @@
             </div>
         </div>
     </div>
+<!--<th:block th:insert="blocks/footer :: footer"></th:block>-->
 </body>
 </html>

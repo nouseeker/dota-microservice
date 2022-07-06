@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/information.css}" href="/static/css/information.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script defer th:src="@{/scripts/info.js}"></script>
+</head>
+<body>
+<th:block th:insert="blocks/header :: header"></th:block>
+<div class="main">
+    <div class="information">
+        <div class="image">
+            <img src="../wallpaper/pngegg.png" height="200px">
+        </div>
+        <div style="display: table">
+            <form method="post" th:action="@{/update}" th:object="${user}">
+                <div class="about_user">
+                    <div><span th:text="${user.getStatus()}" th:style='${user.getStatus().name().equals("ACTIVE")?"color:green":"color:red"}'></span></div>
+                </div>
+                <div class="changer">
+                    <div style="display: flex">
+                        <div>Username</div>
+                        <div class="info" th:text="${user.getUsername()}"></div>
+                    </div>
+                    <div style="display: flex">
+                        <div>Email</div>
+                        <div class="info" th:text="${user.getEmail()}"></div>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div>
+                        <label for="new_password">NEW PASSWORD</label>
+                        <input type="password"  name="newPassword" id="new_password">
+                    </div>
+                </div>
+                <div style="justify-content: center; display: flex"><input type="submit" value="UPDATE" id="update"></div>
+            </form>
+            <div style="display: flex;position: relative; justify-content: center">
+                <div><input type="submit" value="CLEAR HISTORY" id="clear" onclick="clearHistory()" autocomplete="off"></div>
+                <div><input type="submit" value="LOGOUT" id="logout" onclick="logout()" autocomplete="off"></div>
+            </div>
+        </div>
+    </div>
+    <div th:if="${not histories.isEmpty()}" class="history">
+        <div>History</div>
+        <div style="display: flex; position: relative">
+            <div class="radiant_team">Radiant</div>
+            <div class="dire_team">Dire</div>
+        </div>
+        <div th:each="history : ${histories}">
+            <div style="display: flex;padding-left: 15px; position: relative; margin-bottom: 3px">
+                <div style="display: flex; border: 1px solid white">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH1_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH2_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH3_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH4_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH5_id())+1}+').png'}">
+                    <div class="percent" style="border-left: 1px solid white" th:text="${(history.getChance()/2)+50}+'%'"></div>
+                </div>
+                <div style="position: absolute; right: 15px;display: flex; border: 1px solid white">
+                    <div class="percent" style="border-right: 1px solid white" th:text="${(-history.getChance()/2)+50}+'%'"></div>
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH6_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH7_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH8_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH9_id())+1}+').png'}">
+                    <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH10_id())+1}+').png'}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

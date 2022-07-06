@@ -1,0 +1,126 @@
+.information{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+.main{
+	width: 800px;
+}
+.about_user, .changer{
+	display: table;
+	color: white;
+}
+.history {
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Kanit', sans-serif;
+	border-top: 1px solid white;
+	width: 100%;
+}
+.radiant_team {
+	color: green;
+	margin-left: 15px;
+}
+.dire_team{
+	position: absolute;
+	right: 15px;
+	color: #8c0f0f;
+}
+.radiant_team,.dire_team{
+	font-family: 'Kanit', sans-serif;
+}
+.history img {
+	height: 25px;
+	width: 50px;
+	object-fit: cover;
+}
+.history td {
+	height: 25px;
+	width: 50px;
+}
+.changer{
+	text-transform: uppercase;
+	font-family: 'Kanit', sans-serif;
+}
+.changer div{
+	width: 350px;
+	position: relative;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+.changer input{
+	position: absolute;
+	right: 0;
+	background: transparent;
+	font-size: 15px;
+	letter-spacing: 1px;
+	font-family: 'Kanit', sans-serif;
+	border: none;
+	color: white;
+	border-bottom: 1px solid #959192;
+	outline: none;
+	box-shadow: inset 20px 20px 0px 20px transparent;
+	text-align: center;
+}
+.changer input:hover{
+	border-bottom: 1px solid white;
+}
+.about_user{
+	font-family: 'Abel', sans-serif;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin-top: 5px;
+}
+input:-webkit-autofill {
+	transition: all 5000s ease-in-out 0s;
+}
+#update{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#update, #clear , #logout {
+	margin-top:5px;
+	width: 115px;
+	cursor: pointer;
+	font-family: 'Kanit', sans-serif;
+	font-weight: bold;
+	color: #000000;
+	font-size: 15px;
+	background-color: #ffffff;
+	border: 1px solid white;
+	transition: all 0.3s;
+}
+#clear{
+	margin-right: 5px;
+	border-bottom-left-radius: 10px;
+}
+#logout{
+	border-bottom-right-radius: 10px;
+}
+.info{
+	font-family: 'Abel', sans-serif;
+	text-align: center;
+}
+#update:hover, #clear:hover, #logout:hover {
+	background-color: #000000;
+	color: white;
+	transition: all 0.3s;
+	font-weight: normal;
+}
+.img_hero {
+	height: 35px;
+	width: 70px;
+	object-fit: cover;
+	border-right: 1px solid white;
+	border-left: 1px solid white;
+}
+.percent{
+	font-family: 'Abel', sans-serif;
+	width: 50px;
+	text-align: center;
+}
+.image{
+	margin-bottom: 15px;
+}

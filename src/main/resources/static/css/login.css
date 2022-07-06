@@ -1,0 +1,97 @@
+.auth{
+    background-color:rgba(0, 0, 0, 0.9);
+    display: table;
+    border: 3px solid white;
+    border-top:0px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.form {
+    width: 400px;
+    font-family: 'Kanit', sans-serif;
+    margin: 0 auto;
+    margin-top: 5%;
+    font-size: 30px;
+    padding: 32px;
+    text-align: center;
+    display: table;
+    border: 1px solid white;
+    border-top: 0px;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+h1{
+    font-family: 'Kanit', sans-serif;
+    font-size: 35px;
+    font-weight: normal;
+    color: white;
+}
+.form_group {
+    text-align: left;
+    position: relative;
+    margin-bottom: 32px;
+}
+label{
+    opacity: 0.7;}
+
+.form_label{
+    position: absolute;
+    top: 15px;
+    transition: 0.3s;
+    font-size: 20px;
+    color: #737171;
+    cursor: text;
+    font-weight: bold;
+}
+.form_input {
+    background: transparent;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Kanit', sans-serif;
+    width: 100%;
+    padding: 0 0 0 10px;
+    transition: 0.3s;
+    border: none;
+    color: white;
+    border-bottom: 1px solid #959192;
+    outline: none;
+    box-shadow: inset 20px 20px 0px 20px transparent;
+}
+.form_input:focus{
+    border-bottom: 1px solid white;
+}
+.form_button{
+    font-family: 'Kanit', sans-serif;
+    padding: 10px 10px;
+    font-size: 20px;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 5px;
+}
+.form_button:focus,
+.form_button:hover{
+    background-color: black;
+    color: white;
+    font-weight: normal;
+}
+.form_input:focus ~ .form_label,
+.form_input:not(:placeholder-shown)~.form_label{
+    top: -10px;
+    font-size: 15px;
+    color: darkorange;}
+.buttons{
+    display: flex;
+    justify-content: center;}
+
+input:-webkit-autofill {
+    transition: all 5000s ease-in-out 0s;
+}
