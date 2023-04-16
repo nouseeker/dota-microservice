@@ -1,4 +1,4 @@
-package com.example.dota.security.jwt;
+package dev.n7meless.dota.security.jwt;
 
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -69,7 +69,7 @@ public class JwtTokenProvider {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public String resolveToken(HttpServletRequest request){
+    public String resolveToken(HttpServletRequest request) {
         return request.getHeader(authorizationHeader);
     }
 }

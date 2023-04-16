@@ -1,4 +1,4 @@
-package dev.n7meless.economyservice.dto;
+package dev.n7meless.counterservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -34,11 +34,11 @@
                 <div style="display: flex;justify-content: center;">
                     <div class="dire-placeholder" style="width: 100px">
                         <p>Heroes</p>
-                        <button class="hero-placeholder" ></button>
-                        <button class="hero-placeholder" ></button>
-                        <button class="hero-placeholder" ></button>
-                        <button class="hero-placeholder" ></button>
-                        <button class="hero-placeholder" ></button>
+                        <button class="hero-placeholder"></button>
+                        <button class="hero-placeholder"></button>
+                        <button class="hero-placeholder"></button>
+                        <button class="hero-placeholder"></button>
+                        <button class="hero-placeholder"></button>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                             <div style="width: 180px">
                                 <img class="rank-img" src="/rank/Archon.png">
                             </div>
-                            <label  for="r2" class="l-radio">
+                            <label for="r2" class="l-radio">
                                 <input type="radio" id="r2" name="selRank" class="rank-selection">
                             </label>
                         </div>
@@ -81,7 +81,7 @@
                                 <img class="rank-img" src="/rank/Legend.png">
                             </div>
                             <label for="r3" class="l-radio">
-                                <input type="radio" id="r3" name="selRank" class="rank-selection" >
+                                <input type="radio" id="r3" name="selRank" class="rank-selection">
                             </label>
                         </div>
                         <div class="container">
@@ -98,7 +98,7 @@
                                 <img class="rank-img" src="/rank/Immortal.png">
                             </div>
                             <label for="r5" class="l-radio">
-                            <input type="radio" id="r5" name="selRank" class="rank-selection" value="0">
+                                <input type="radio" id="r5" name="selRank" class="rank-selection" value="0">
                             </label>
                         </div>
                     </div>
@@ -107,29 +107,31 @@
                     <div class="select-option" style="position: relative;width: 550px">
                         <div style="width: 100px; color: white; padding: 5px">DEFAULT
                         </div>
-                        <div style="padding-top: 5px"><input type="checkbox" id="defCh" name="scales" checked value="1"></div>
+                        <div style="padding-top: 5px"><input type="checkbox" id="defCh" name="scales" checked value="1">
+                        </div>
                         <button id="analyze" onclick="analyze()">RESULT</button>
-                    </div>
-                </div>
-                </div>
-                </div>
-    </div>
-            <div>
-                <div class = "form_input">
-                    <input id="elastic" autocomplete="off" placeholder="HERO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'HERO'"/></label>
-                </div>
-                <div class="hero_overview">
-                    <div class="hero" th:each="hero: ${heroes}" th:name="${hero}">
-                        <span th:text="${hero}" style="text-indent: -9999px;white-space: nowrap;"></span>
-                        <img class="img_hero" th:src="@{'icons/id ('+${(heroes.indexOf(hero)+1)}+').png'}">
-                        <button class="inp_radiant" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}"
-                                name="radiant"/>
-                        <button class="inp_dire" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}" name="dire"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div>
+        <div class="form_input">
+            <input id="elastic" autocomplete="off" placeholder="HERO" onfocus="this.placeholder = ''"
+                   onblur="this.placeholder = 'HERO'"/></label>
+        </div>
+        <div class="hero_overview">
+            <div class="hero" th:each="hero: ${heroes}" th:name="${hero}">
+                <span th:text="${hero}" style="text-indent: -9999px;white-space: nowrap;"></span>
+                <img class="img_hero" th:src="@{'icons/id ('+${(heroes.indexOf(hero)+1)}+').png'}">
+                <button class="inp_radiant" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}"
+                        name="radiant"/>
+                <button class="inp_dire" th:id="${(heroes.indexOf(hero)+1)}" th:value="${hero}" name="dire"/>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <!--<th:block th:insert="blocks/footer :: footer"></th:block>-->
 </body>
 </html>

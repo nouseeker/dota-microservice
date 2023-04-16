@@ -1,9 +1,7 @@
-package com.example.dota.controllers;
+package dev.n7meless.dota.controllers;
 
-import com.example.dota.model.User;
-import com.example.dota.security.UserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import dev.n7meless.dota.model.User;
+import dev.n7meless.dota.security.UserDetailsServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +14,7 @@ import javax.validation.Valid;
 public class AuthController {
     private UserDetailsServiceImpl userDetailsSecurity;
 
-//    @Autowired
+    //    @Autowired
     public AuthController(UserDetailsServiceImpl userDetailsSecurity) {
         this.userDetailsSecurity = userDetailsSecurity;
     }

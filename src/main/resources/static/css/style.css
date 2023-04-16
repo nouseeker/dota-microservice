@@ -4,7 +4,8 @@ body {
     background-repeat: no-repeat;
     margin: 0;
 }
-header{
+
+header {
     height: 60px;
     color: white;
     background-color: black;
@@ -16,7 +17,8 @@ header{
     margin-bottom: 30px;
     min-width: 1000px;
 }
-a{
+
+a {
     color: white;
     text-decoration: none;
     outline: none;
@@ -29,36 +31,43 @@ a{
     background-repeat: no-repeat;
     background-size: 0% 2px;
 }
-a:hover{
+
+a:hover {
     color: darkorange;
     background-size: 100% 2px;
     transition: 0.3s all;
 }
-.main{
-    background-color:rgba(0, 0, 0, 0.9);
+
+.main {
+    background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid white;
-    border-top:0px;
+    border-top: 0px;
     border-radius: 10px;
     position: relative;
     width: 60%;
     margin: 0 auto;
     width: 1000px;
 }
-.l-header,.r-header{
+
+.l-header, .r-header {
     margin: 10px;
     display: flex;
     position: absolute;
 }
-.r-header{
+
+.r-header {
     right: 15px;
 }
-.l-header{
+
+.l-header {
     left: 15px;
 
 }
+
 .logo {
     margin: 0 auto;
 }
+
 footer {
     position: fixed;
     bottom: 0;
@@ -70,6 +79,7 @@ footer {
     display: flex;
     background: black;
 }
+
 .f_info {
     position: absolute;
     background: black;

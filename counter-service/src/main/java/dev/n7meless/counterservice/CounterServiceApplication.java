@@ -1,13 +1,13 @@
-package dev.n7meless.heroservice;
+package dev.n7meless.counterservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HeroServiceApplication {
+public class CounterServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HeroServiceApplication.class, args);
+        SpringApplication.run(CounterServiceApplication.class, args);
     }
 
 }

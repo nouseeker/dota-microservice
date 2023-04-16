@@ -1,7 +1,7 @@
-package com.example.dota.repository;
+package dev.n7meless.dota.repository;
 
-import com.example.dota.model.History;
-import com.example.dota.model.User;
+import dev.n7meless.dota.model.History;
+import dev.n7meless.dota.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

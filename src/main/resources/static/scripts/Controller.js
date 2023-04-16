@@ -23,10 +23,9 @@ elastic.oninput = function () {
     hero = this.value.trim().toLowerCase();
     if (hero != "") {
         elasticItem.forEach(function (elem) {
-            if (elem.innerText.toLowerCase().indexOf((hero)) <0) {
+            if (elem.innerText.toLowerCase().indexOf((hero)) < 0) {
                 elem.classList.add("hide");
-            }
-            else {
+            } else {
                 elem.classList.remove("hide");
             }
         })
@@ -34,7 +33,8 @@ elastic.oninput = function () {
         removeHidden();
     }
 }
-function removeHidden(){
+
+function removeHidden() {
     elasticItem.forEach(function (elem) {
         elem.classList.remove("hide");
     })

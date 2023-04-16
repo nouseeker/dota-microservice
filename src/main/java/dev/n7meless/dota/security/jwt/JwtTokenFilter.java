@@ -1,4 +1,4 @@
-package com.example.dota.security.jwt;
+package dev.n7meless.dota.security.jwt;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,15 +28,15 @@ public class JwtTokenFilter extends GenericFilterBean {
         try {
             if (token != null && jwtTokenProvider.validateToken(token)) {
                 Authentication authentication = jwtTokenProvider.getAuthentication(token);
-                if (authentication!=null){
+                if (authentication != null) {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
-        } catch (JwtAuthenticationException e){
+        } catch (JwtAuthenticationException e) {
             SecurityContextHolder.clearContext();
             ((HttpServletResponse) servletResponse).sendError(e.getHttpStatus().value());
             throw new JwtAuthenticationException("JWT token is expired or invalid");
         }
-        filterChain.doFilter(servletRequest,servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }

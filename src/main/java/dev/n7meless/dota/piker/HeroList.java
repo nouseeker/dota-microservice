@@ -1,4 +1,4 @@
-package com.example.dota.piker;
+package dev.n7meless.dota.piker;
 
 
 import org.springframework.stereotype.Component;

@@ -22,7 +22,9 @@
         <div style="display: table">
             <form method="post" th:action="@{/update}" th:object="${user}">
                 <div class="about_user">
-                    <div><span th:text="${user.getStatus()}" th:style='${user.getStatus().name().equals("ACTIVE")?"color:green":"color:red"}'></span></div>
+                    <div><span th:text="${user.getStatus()}"
+                               th:style='${user.getStatus().name().equals("ACTIVE")?"color:green":"color:red"}'></span>
+                    </div>
                 </div>
                 <div class="changer">
                     <div style="display: flex">
@@ -39,13 +41,15 @@
                     </div>
                     <div>
                         <label for="new_password">NEW PASSWORD</label>
-                        <input type="password"  name="newPassword" id="new_password">
+                        <input type="password" name="newPassword" id="new_password">
                     </div>
                 </div>
-                <div style="justify-content: center; display: flex"><input type="submit" value="UPDATE" id="update"></div>
+                <div style="justify-content: center; display: flex"><input type="submit" value="UPDATE" id="update">
+                </div>
             </form>
             <div style="display: flex;position: relative; justify-content: center">
-                <div><input type="submit" value="CLEAR HISTORY" id="clear" onclick="clearHistory()" autocomplete="off"></div>
+                <div><input type="submit" value="CLEAR HISTORY" id="clear" onclick="clearHistory()" autocomplete="off">
+                </div>
                 <div><input type="submit" value="LOGOUT" id="logout" onclick="logout()" autocomplete="off"></div>
             </div>
         </div>
@@ -64,10 +68,12 @@
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH3_id())+1}+').png'}">
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH4_id())+1}+').png'}">
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH5_id())+1}+').png'}">
-                    <div class="percent" style="border-left: 1px solid white" th:text="${(history.getChance()/2)+50}+'%'"></div>
+                    <div class="percent" style="border-left: 1px solid white"
+                         th:text="${(history.getChance()/2)+50}+'%'"></div>
                 </div>
                 <div style="position: absolute; right: 15px;display: flex; border: 1px solid white">
-                    <div class="percent" style="border-right: 1px solid white" th:text="${(-history.getChance()/2)+50}+'%'"></div>
+                    <div class="percent" style="border-right: 1px solid white"
+                         th:text="${(-history.getChance()/2)+50}+'%'"></div>
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH6_id())+1}+').png'}">
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH7_id())+1}+').png'}">
                     <img class="img_hero" th:src="@{'icons/id ('+${images.indexOf(history.getH8_id())+1}+').png'}">

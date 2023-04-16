@@ -1,17 +1,12 @@
-package com.example.dota.piker;
+package dev.n7meless.dota.piker;
 
 import lombok.SneakyThrows;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,18 +24,16 @@ public class DotabuffParser implements Parse {
 
     @SneakyThrows
     public void setConForWinrate(String url) {
-        var string = URI.create(url).toString();
-        docWin = Jsoup.parse(string);
+        URL urlBody = new URL(url);
+        docWin = Jsoup.parse(urlBody, 0);
 //            docWin = Jsoup.connect(url).get();
 
     }
 
+    @SneakyThrows
     public void setConForCounters(String url) {
-        try {
-            docCounter = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        URL urlBody = new URL(url);
+        docCounter = Jsoup.parse(urlBody, 0);
     }
 
 

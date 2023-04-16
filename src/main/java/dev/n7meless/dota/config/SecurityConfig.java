@@ -1,6 +1,6 @@
-package com.example.dota.config;
+package dev.n7meless.dota.config;
 
-import com.example.dota.model.Permission;
+import dev.n7meless.dota.model.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

@@ -1,11 +1,11 @@
-package com.example.dota.controllers;
+package dev.n7meless.dota.controllers;
 
-import com.example.dota.model.History;
-import com.example.dota.model.User;
-import com.example.dota.piker.DotabuffParser;
-import com.example.dota.piker.HeroList;
-import com.example.dota.repository.UserRepository;
-import com.example.dota.service.HistoryService;
+import dev.n7meless.dota.model.History;
+import dev.n7meless.dota.model.User;
+import dev.n7meless.dota.piker.DotabuffParser;
+import dev.n7meless.dota.piker.HeroList;
+import dev.n7meless.dota.repository.UserRepository;
+import dev.n7meless.dota.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,7 +56,7 @@ public class MainController {
         dotabuffParse.setNames(n);
         long x = System.currentTimeMillis();
         User user = userRepository.findByEmail(authentication.getName()).get();
-            dotabuffParse.winrateParse();
+        dotabuffParse.winrateParse();
         dotabuffParse.counterParse();
         dotabuffParse.chance();
         historyService.saveHistory(new History(user, n[0], n[1], n[2], n[3], n[4], n[5], n[6], n[7], n[8], n[9], dotabuffParse.getTeamChance()));

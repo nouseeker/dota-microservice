@@ -1,4 +1,4 @@
-package dev.n7meless.economyservice.dto.enums;
+package dev.n7meless.counterservice.dto.enums;
 
 public enum DateEnum {
     ALLTIME("all"), WEEK("week"), MONTH("month"), THREEMONTHS("3month"), SIXMONTHS("6month"), YEAR("year");
@@ -12,12 +12,14 @@ public enum DateEnum {
     public String toString() {
         return date;
     }
-    public boolean equals(String date){
+
+    public boolean equals(String date) {
         return this.toString().equals(date);
     }
-    public static boolean fromDate(String date){
+
+    public static boolean fromDate(String date) {
         for (DateEnum d : DateEnum.values()) {
-            if(d.equals(date)){
+            if (d.equals(date)) {
                 return true;
             }
         }

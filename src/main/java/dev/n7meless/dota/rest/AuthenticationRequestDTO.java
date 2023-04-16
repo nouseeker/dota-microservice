@@ -1,4 +1,4 @@
-package com.example.dota.rest;
+package dev.n7meless.dota.rest;
 
 import lombok.Data;
 

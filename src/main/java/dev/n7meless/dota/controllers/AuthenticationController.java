@@ -20,13 +20,13 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/auth")
-public class AuthenticationRestController {
+public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private JwtTokenProvider jwtTokenProvider;
 
-    public AuthenticationRestController(AuthenticationManager authenticationManager, UserRepository userRepository, JwtTokenProvider jwtTokenProvider) {
+    public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository, JwtTokenProvider jwtTokenProvider) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.jwtTokenProvider = jwtTokenProvider;
@@ -39,15 +39,16 @@ public class AuthenticationRestController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User doesn't exists"));
             String token = jwtTokenProvider.createToken(request.getEmail(), user.getRole().name());
-            Map<Object, Object>  response  = new HashMap<>();
+            Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());
             response.put("token", token);
 
-            return "main";
-        }catch (AuthenticationException e){
-            return "login";
+            return "redirect:/main";
+        } catch (AuthenticationException e) {
+            return "redirect:/login";
         }
     }
+
     @GetMapping("/login")
     public String getLoginPage() {
         return "login";
@@ -62,6 +63,6 @@ public class AuthenticationRestController {
     @PostMapping("/logout")
     public void logout(HttpServletRequest request, HttpServletResponse response) {
         SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
-        securityContextLogoutHandler.logout(request,response,null);
+        securityContextLogoutHandler.logout(request, response, null);
     }
 }

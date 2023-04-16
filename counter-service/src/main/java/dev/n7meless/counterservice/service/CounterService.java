@@ -1,26 +1,49 @@
 package dev.n7meless.counterservice.service;
 
-import dev.n7meless.economyservice.dto.Economy;
-import dev.n7meless.economyservice.dto.enums.DateEnum;
-import dev.n7meless.economyservice.parser.EconomyParser;
-import lombok.AccessLevel;
+import dev.n7meless.counterservice.dto.Counter;
+import dev.n7meless.counterservice.parser.CounterParser;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class EconomyService {
-    EconomyParser parser;
+public class CounterService {
+    private final CounterParser parser;
+    @Value("${parse.dotabuff.uri}")
+    private String dotabuffUri;
 
     @SneakyThrows
-    public List<Economy> getAllEconomy(String date) {
-        if (DateEnum.fromDate(date)) {
-            return parser.parse(date);
-        } else return null;
+    public Counter getCounters(String hero) {
+        var uri = UriComponentsBuilder.fromUriString(dotabuffUri)
+                .path(hero)
+                .path("counters")
+                .toUriString();
+        Counter counter = parser.parse(uri);
+        counter.setDate("month");
+        counter.setUpdatedAt(LocalDate.now());
+        counter.setLocalizedName(hero);
+        return counter;
+    }
+
+    @SneakyThrows
+    public Counter getCountersByDate(String hero, String date) {
+        if (date == null) {
+            date = "month";
+        }
+        var uri = UriComponentsBuilder.fromUriString(dotabuffUri)
+                .pathSegment(hero, "counters")
+                .queryParam("date", date)
+                .toUriString();
+        System.out.println(uri);
+        Counter counter = parser.parse(uri);
+        counter.setDate(date);
+        counter.setUpdatedAt(LocalDate.now());
+        counter.setLocalizedName(hero);
+        return counter;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.dota.model;
+package dev.n7meless.dota.model;
 
 public enum Permission {
     DEVELOPERS_READ("developers:read"),

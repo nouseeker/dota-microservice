@@ -1,6 +1,6 @@
-package com.example.dota.controllers;
+package dev.n7meless.dota.controllers;
 
-import com.example.dota.model.Developer;
+import dev.n7meless.dota.model.Developer;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,25 +17,27 @@ public class DevelopersRestController {
     ).collect(Collectors.toList());
 
     @GetMapping
-    public List<Developer> getAll(){
+    public List<Developer> getAll() {
         return DEVELOPERS;
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('developers:read')")
-    public Developer getByID(@PathVariable Long id){
+    public Developer getByID(@PathVariable Long id) {
         return DEVELOPERS.stream().filter(developer -> developer.getId().equals(id))
                 .findFirst().orElse(null);
     }
+
     @PostMapping
     @PreAuthorize("hasAuthority('developers:write')")
-    public Developer create(@RequestBody Developer developer){
+    public Developer create(@RequestBody Developer developer) {
         this.DEVELOPERS.add(developer);
         return developer;
     }
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public void deleteById(@PathVariable Long id){
+    public void deleteById(@PathVariable Long id) {
         this.DEVELOPERS.removeIf(developer -> developer.getId().equals(id));
     }
 }

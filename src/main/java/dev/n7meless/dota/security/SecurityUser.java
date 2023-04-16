@@ -1,7 +1,7 @@
-package com.example.dota.security;
+package dev.n7meless.dota.security;
 
-import com.example.dota.model.Status;
-import com.example.dota.model.User;
+import dev.n7meless.dota.model.Status;
+import dev.n7meless.dota.model.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

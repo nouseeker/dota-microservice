@@ -14,18 +14,21 @@
 <th:block th:insert="blocks/header :: header"></th:block>
 <form method="post" th:action="@{/auth/registration}" th:object="${user}" class="form">
     <h1 id="login">REGISTRATION</h1>
-    <div class = "form_group">
-        <input class="form_input" id="username" th:field="*{username}" name="username" placeholder=" " autocomplete="off" />
+    <div class="form_group">
+        <input class="form_input" id="username" th:field="*{username}" name="username" placeholder=" "
+               autocomplete="off"/>
         <label class="form_label" for="username">USERNAME</label>
         <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name error</div>
     </div>
-    <div class = "form_group">
-        <input type="text"  id="email" th:field="*{email}" class="form_input" name="email" placeholder=" " autocomplete="off" />
+    <div class="form_group">
+        <input type="text" id="email" th:field="*{email}" class="form_input" name="email" placeholder=" "
+               autocomplete="off"/>
         <label class="form_label" for="email">EMAIL</label>
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
     </div>
-    <div class = "form_group">
-        <input type="password"  id="password" th:field="*{password}" class="form_input" name="password" placeholder=" " autocomplete="off" />
+    <div class="form_group">
+        <input type="password" id="password" th:field="*{password}" class="form_input" name="password" placeholder=" "
+               autocomplete="off"/>
         <label class="form_label" for="password">PASSWORD</label>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
 

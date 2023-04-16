@@ -4,28 +4,35 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.n7meless.heroservice.dto.Benchmark;
 import dev.n7meless.heroservice.dto.Hero;
-import lombok.AccessLevel;
+import dev.n7meless.heroservice.repository.HeroRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.experimental.FieldDefaults;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class HeroService {
-    ObjectMapper objectMapper;
-    RestTemplate restTemplate;
-    static String OPENDOTA_API_URL = "https://api.opendota.com/api/";
+    private final ObjectMapper objectMapper;
+    private final RestTemplate restTemplate;
+    private final HeroRepository heroRepository;
+
+    @Value("${api.opendota.url}")
+    private String opendotaUri;
 
     @SneakyThrows
     public List<Hero> getAllHeroes() {
-        String response = sendRequest(OPENDOTA_API_URL + "heroStats");
+        var uriString = UriComponentsBuilder.fromUriString(opendotaUri)
+                .path("heroStats")
+                .toUriString();
+
+        String response = sendRequest(uriString);
         List<Hero> heroes = objectMapper.readValue(response, new TypeReference<List<Hero>>() {
         });
         return heroes;
@@ -33,7 +40,12 @@ public class HeroService {
 
     @SneakyThrows
     public Benchmark getBenchmarkByHeroId(Long heroId) {
-        String response = sendRequest(OPENDOTA_API_URL + "benchmarks?hero_id=" + heroId);
+        var uriString = UriComponentsBuilder.fromUriString(opendotaUri)
+                .path("benchmarks")
+                .queryParam("hero_id", heroId)
+                .toUriString();
+
+        String response = sendRequest(uriString);
         JSONObject result = new JSONObject(response);
         var newJson = result.get("result").toString();
         Benchmark benchmark = objectMapper.readValue(newJson, Benchmark.class);

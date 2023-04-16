@@ -49,7 +49,7 @@
                     <div class="team_side_divs">
                         Worst hero
                         <img th:src="@{'icons/id ('+(${images.indexOf(heroes[statsChance[1]])+1})+').png'}"
-                            height="25">
+                             height="25">
                         by chance of winning
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="team_side_divs">
                         Best hero <img
                             th:src="@{'icons/id ('+${images.indexOf(heroes[statsChance[2]])+1}+').png'}" height="25">
-                       by chance of winning
+                        by chance of winning
                     </div>
                     <div class="team_side_divs">
                         Worst hero <img
@@ -161,7 +161,7 @@
                     th:style="${counters[9]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[9]}" th:style="${disadvantage[9]>0 ? 'color:green':'color:red'}"></td>
                 <td th:text="${chance.get(1) +'%'}"
-                    th:style="${chance.get(1)>0 ? 'background-color:#003a00':'background-color:#440101'}" ></td>
+                    th:style="${chance.get(1)>0 ? 'background-color:#003a00':'background-color:#440101'}"></td>
 
 
             </tr>
@@ -205,7 +205,7 @@
                     th:style="${counters[19]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[19]}" th:style="${disadvantage[19]>0 ? 'color:green':'color:red'}"></td>
                 <td th:text="${chance.get(3)+'%'}"
-                    th:style="${chance.get(3)>0 ? 'background-color:#003a00':'background-color:#440101'}" ></td>
+                    th:style="${chance.get(3)>0 ? 'background-color:#003a00':'background-color:#440101'}"></td>
 
 
             </tr>
@@ -227,22 +227,27 @@
                     th:style="${counters[24]>50 ? 'background-color:green':'background-color:red'}"></td>
                 <td th:text="${disadvantage[24]}" th:style="${disadvantage[24]>0 ? 'color:green':'color:red'}"></td>
                 <td th:text="${chance.get(4)+'%'}"
-                    th:style="${chance.get(4)>0 ? 'background-color:#003a00':'background-color:#440101'}" ></td>
+                    th:style="${chance.get(4)>0 ? 'background-color:#003a00':'background-color:#440101'}"></td>
 
 
             </tr>
             <tr>
                 <td><p>CHANCE</p>
                 <td th:text="${chance.get(5)+'%'}"
-                    th:style="${chance.get(5)>0 ? 'background-color:#003a00':'background-color:#440101'}" colspan="2"></td>
+                    th:style="${chance.get(5)>0 ? 'background-color:#003a00':'background-color:#440101'}"
+                    colspan="2"></td>
                 <td th:text="${chance.get(6)+'%'}"
-                    th:style="${chance.get(6)>0 ? 'background-color:#003a00':'background-color:#440101'}" colspan="2"></td>
+                    th:style="${chance.get(6)>0 ? 'background-color:#003a00':'background-color:#440101'}"
+                    colspan="2"></td>
                 <td th:text="${chance.get(7)+'%'}"
-                    th:style="${chance.get(7)>0 ? 'background-color:#003a00':'background-color:#440101'}" colspan="2"></td>
+                    th:style="${chance.get(7)>0 ? 'background-color:#003a00':'background-color:#440101'}"
+                    colspan="2"></td>
                 <td th:text="${chance.get(8)+'%'}"
-                    th:style="${chance.get(8)>0 ? 'background-color:#003a00':'background-color:#440101'}" colspan="2"></td>
+                    th:style="${chance.get(8)>0 ? 'background-color:#003a00':'background-color:#440101'}"
+                    colspan="2"></td>
                 <td th:text="${chance.get(9)+'%'}"
-                    th:style="${chance.get(9)>0 ? 'background-color:#003a00':'background-color:#440101'}" colspan="2"></td>
+                    th:style="${chance.get(9)>0 ? 'background-color:#003a00':'background-color:#440101'}"
+                    colspan="2"></td>
                 <td></td>
             </tr>
         </table>

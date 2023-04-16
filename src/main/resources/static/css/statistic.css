@@ -1,7 +1,8 @@
 table {
     padding: 0;
 }
-td{
+
+td {
     font-family: 'Kanit', sans-serif;
     font-size: 15px;
     color: white;
@@ -14,28 +15,33 @@ td{
     vertical-align: middle;
     overflow: hidden;
 }
-.rp,.dp{
+
+.rp, .dp {
     font-size: 40px;
     font-family: 'Kanit', sans-serif;
     font-weight: bold;
     text-align: center;
 }
 
-.rp{
+.rp {
     color: green;
 }
-.dp{
+
+.dp {
     color: darkred;
 }
+
 .winrate {
     width: 180px;
     height: 280px;
 }
-.radiant_table,.dire_table {
+
+.radiant_table, .dire_table {
     display: table;
     top: 0;
 }
-.stats{
+
+.stats {
     color: white;
     font-family: 'Kanit', sans-serif;
     font-size: 15px;
@@ -43,14 +49,17 @@ td{
     width: 100%;
     text-transform: uppercase;
 }
-.dire_table{
+
+.dire_table {
     float: right;
     margin-right: 10px;
 }
-.radiant_table{
+
+.radiant_table {
     float: left;
     margin-left: 10px;
 }
+
 .radiant_img_hero {
     border-radius: 0px;
     top: -5px;
@@ -60,7 +69,8 @@ td{
     object-fit: cover;
     position: absolute;
 }
-.dire_img_hero{
+
+.dire_img_hero {
     border-radius: 0px;
     top: -5px;
     left: -10px;
@@ -69,20 +79,24 @@ td{
     object-fit: cover;
     position: absolute;
 }
-p{
+
+p {
     margin: 0;
 }
+
 .stats_table {
     margin: 0 auto;
     margin-bottom: 5px;
 }
-.team_side{
+
+.team_side {
     color: white;
     font-family: 'Kanit', sans-serif;
     font-size: 30px;
-    margin:10px;
+    margin: 10px;
     text-align: center;
 }
+
 .conclusion {
     border-top: 2px solid white;
     margin-top: 10px;
@@ -90,6 +104,7 @@ p{
     font-size: 20px;
     text-align: center;
 }
+
 .team_side_divs {
     display: flex;
     text-align: center;
@@ -98,13 +113,15 @@ p{
     margin-top: 5px;
     justify-content: center;
 }
-.team_side_divs img{
+
+.team_side_divs img {
     margin-left: 5px;
     margin-right: 5px;
     object-fit: cover;
     width: 40px;
 }
-#back{
+
+#back {
     margin-top: 10px;
     width: 100px;
     cursor: pointer;
@@ -116,7 +133,8 @@ p{
     border: 1px solid white;
     transition: all 0.3s;
 }
-#back:hover{
+
+#back:hover {
     background-color: #000000;
     color: white;
     transition: all 0.3s;

@@ -1,4 +1,4 @@
-package com.example.dota.model;
+package dev.n7meless.dota.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

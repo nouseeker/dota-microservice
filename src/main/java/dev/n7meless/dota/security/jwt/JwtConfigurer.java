@@ -1,4 +1,4 @@
-package com.example.dota.security.jwt;
+package dev.n7meless.dota.security.jwt;
 
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

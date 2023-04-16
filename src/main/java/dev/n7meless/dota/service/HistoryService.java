@@ -1,8 +1,8 @@
-package com.example.dota.service;
+package dev.n7meless.dota.service;
 
-import com.example.dota.model.History;
-import com.example.dota.model.User;
-import com.example.dota.repository.HistoryRepository;
+import dev.n7meless.dota.model.History;
+import dev.n7meless.dota.model.User;
+import dev.n7meless.dota.repository.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

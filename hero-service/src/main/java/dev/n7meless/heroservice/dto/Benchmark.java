@@ -3,14 +3,17 @@ package dev.n7meless.heroservice.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Benchmark {
     @JsonSetter("gold_per_min")
     List<Percentile> goldPerMin;

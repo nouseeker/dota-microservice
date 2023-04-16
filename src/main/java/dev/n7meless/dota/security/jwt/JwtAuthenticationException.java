@@ -1,8 +1,9 @@
-package com.example.dota.security.jwt;
+package dev.n7meless.dota.security.jwt;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
+
 @Getter
 public class JwtAuthenticationException extends AuthenticationException {
     private HttpStatus httpStatus;

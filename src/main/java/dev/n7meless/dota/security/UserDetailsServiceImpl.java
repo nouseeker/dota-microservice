@@ -1,9 +1,9 @@
-package com.example.dota.security;
+package dev.n7meless.dota.security;
 
-import com.example.dota.model.Role;
-import com.example.dota.model.Status;
-import com.example.dota.model.User;
-import com.example.dota.repository.UserRepository;
+import dev.n7meless.dota.model.Role;
+import dev.n7meless.dota.model.Status;
+import dev.n7meless.dota.model.User;
+import dev.n7meless.dota.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service("userDetailsServiceImpl")
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 

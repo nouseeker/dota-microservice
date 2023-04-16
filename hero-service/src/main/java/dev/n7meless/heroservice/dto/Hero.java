@@ -1,32 +1,36 @@
 package dev.n7meless.heroservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@Document
 @JsonIgnoreProperties(ignoreUnknown = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JsonAlias({"localized_name", "name"})
+    @JsonProperty("name")
+    @JsonSetter("localized_name")
     private String name;
+    @JsonIgnore
+    private String localizedName;
+    private String img;
+    private String icon;
+    private List<String> roles;
     @JsonProperty("attack_type")
     private String attackType;
-    private List<String> roles;
     @JsonProperty("base_health")
     private Integer health;
     @JsonProperty("base_health_regen")
@@ -55,4 +59,22 @@ public class Hero {
     private Integer attackTime;
     @JsonProperty("move_speed")
     private Integer moveSpeed;
+
+    public void setImg(String img) {
+        this.img = "https://api.opendota.com" + img;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = "https://api.opendota.com" + icon;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        this.localizedName = name.replaceAll(" ", "-").toLowerCase();
+    }
+
+    @JsonGetter("localized_name")
+    public String getLocalizedName() {
+        return localizedName;
+    }
 }
