@@ -12,6 +12,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
   mongo-express:
     image: mongo-express:latest
+
     container_name: mongo-express
     restart: always
     ports:
@@ -20,6 +21,12 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_SERVER=mongodb
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.0
+    container_name: laughing_visvesvaraya
+    restart: always
+    ports:
+      - 8181:8080
 volumes:
   data: { }
 networks:

@@ -1,8 +1,14 @@
-eureka.instance.hostname=localhost
-#eureka.instance.prefer-ip-address=true
-eureka.client.register-with-eureka=false
-eureka.client.fetch-registry=false
-eureka.client.service-url.default-zone=http://localhost:8761/eureka
-server.port=8761
-eureka.username=${EUREKA_USERNAME:user}
-eureka.password=${EUREKA_PASSWORD:password}
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      default-zone:
+        http://${eureka.instance.hostname}:${server.port}/eureka
+  username: ${EUREKA_USERNAME:user}
+  password: ${EUREKA_PASSWORD:password}
+server:
+  port: 8761

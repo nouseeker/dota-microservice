@@ -1,6 +1,5 @@
 package dev.n7meless.apigateway.config;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -14,8 +13,8 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity) {
         return serverHttpSecurity.csrf().disable().cors().disable()
                 .authorizeExchange(exchange -> exchange
-                        .pathMatchers("/eureka/**", "/**")
-                        .permitAll()
+                                .pathMatchers("/eureka/**", "/**")
+                                .permitAll()
 //                        .anyExchange()
 //                        .authenticated())
 //                .oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt)

@@ -44,7 +44,7 @@ public class CounterParser {
     }
 
     private Document connect(String path) throws IOException {
-        java.net.URL url = new URL(path);
+        URL url = new URL(path);
         return Jsoup.parse(url, 0);
     }
 

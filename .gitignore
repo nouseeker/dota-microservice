@@ -1,6 +1,8 @@
 */target
 .idea
 .mvn
-.gitignore
-*/.mvn
+*/.gitignore
 target
+*mvn*
+.gitignore
+/src/

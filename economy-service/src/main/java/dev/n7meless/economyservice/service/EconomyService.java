@@ -1,7 +1,7 @@
 package dev.n7meless.economyservice.service;
 
 import dev.n7meless.economyservice.dto.Economy;
-import dev.n7meless.economyservice.dto.enums.DateEnum;
+import dev.n7meless.economyservice.enums.DateEnum;
 import dev.n7meless.economyservice.parser.EconomyParser;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

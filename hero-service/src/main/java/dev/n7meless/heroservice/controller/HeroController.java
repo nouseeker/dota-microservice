@@ -8,18 +8,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/hero")
 public class HeroController {
     private final HeroService heroService;
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Hero>> getHeroes() {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
