@@ -7,9 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Swagger Demo",
-        version = "2.0",
-        description = "Documentation APIs v1.0"),
+@OpenAPIDefinition(info = @Info(title = "Economy API",
+        version = "1.0",
+        description = "Documentation Economy-Service v1.0"),
         servers = @Server(url = "/api/economy", description = "Default Server Url"))
 public class EconomyServiceApplication {
 

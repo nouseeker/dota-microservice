@@ -1,6 +1,6 @@
-package dev.n7meless.lanesservice.dto;
+package dev.n7meless.laneservice.dto;
 
-import dev.n7meless.lanesservice.dto.enums.LaneEnum;
+import dev.n7meless.laneservice.dto.enums.LaneEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

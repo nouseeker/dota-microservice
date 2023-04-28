@@ -1,7 +1,8 @@
-package dev.n7meless.lanesservice.controller;
+package dev.n7meless.laneservice.controller;
 
-import dev.n7meless.lanesservice.dto.Lane;
-import dev.n7meless.lanesservice.service.LaneService;
+import dev.n7meless.laneservice.dto.Lane;
+import dev.n7meless.laneservice.service.LaneService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ public class LaneController {
     private final LaneService laneService;
 
     @GetMapping("/")
+    @Operation(description = "Get hero stats on any lane")
     public List<Lane> getLanes(@RequestParam(name = "lane") String lane) {
         return laneService.getLanesByLane(lane);
     }

@@ -1,7 +1,7 @@
-package dev.n7meless.lanesservice.service;
+package dev.n7meless.laneservice.service;
 
-import dev.n7meless.lanesservice.dto.Lane;
-import dev.n7meless.lanesservice.parser.LaneParser;
+import dev.n7meless.laneservice.dto.Lane;
+import dev.n7meless.laneservice.parser.LaneParser;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.cache.annotation.CacheEvict;

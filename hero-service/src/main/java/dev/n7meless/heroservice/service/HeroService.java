@@ -24,11 +24,11 @@ public class HeroService {
     private final HeroRepository heroRepository;
 
     @Value("${api.opendota.url}")
-    private String opendotaUri;
+    private String opendotaUrl;
 
     @SneakyThrows
     public List<Hero> getAllHeroes() {
-        var uriString = UriComponentsBuilder.fromUriString(opendotaUri)
+        var uriString = UriComponentsBuilder.fromUriString(opendotaUrl)
                 .path("heroStats")
                 .toUriString();
 
@@ -40,7 +40,7 @@ public class HeroService {
 
     @SneakyThrows
     public Benchmark getBenchmarkByHeroId(Long heroId) {
-        var uriString = UriComponentsBuilder.fromUriString(opendotaUri)
+        var uriString = UriComponentsBuilder.fromUriString(opendotaUrl)
                 .path("benchmarks")
                 .queryParam("hero_id", heroId)
                 .toUriString();

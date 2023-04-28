@@ -1,4 +1,4 @@
-package dev.n7meless.lanesservice.dto.enums;
+package dev.n7meless.laneservice.dto.enums;
 
 public enum LaneEnum {
     MIDLANE("mid"), OFFLANE("off"), JUNGLE("jungle"), ROAMING("roaming");

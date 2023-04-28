@@ -2,6 +2,7 @@ package dev.n7meless.counterservice.controller;
 
 import dev.n7meless.counterservice.dto.Counter;
 import dev.n7meless.counterservice.service.CounterService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ public class CounterController {
     private final CounterService counterService;
 
     @GetMapping("/{hero}")
+    @Operation(description = "Get stats of played matches hero versus enemies")
     public ResponseEntity<Counter> getCounters(@PathVariable(value = "hero") String hero,
                                                @RequestParam(value = "date",
                                                        defaultValue = "month", required = false) String date) {

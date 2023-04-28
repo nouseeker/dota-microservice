@@ -1,10 +1,10 @@
-package dev.n7meless.lanesservice;
+package dev.n7meless.laneservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LanesServiceApplicationTests {
+class LaneServiceApplicationTests {
 
     @Test
     void contextLoads() {

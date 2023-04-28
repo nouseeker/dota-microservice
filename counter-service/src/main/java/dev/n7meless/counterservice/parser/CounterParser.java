@@ -47,5 +47,4 @@ public class CounterParser {
         URL url = new URL(path);
         return Jsoup.parse(url, 0);
     }
-
 }

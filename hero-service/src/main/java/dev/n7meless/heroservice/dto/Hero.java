@@ -1,9 +1,6 @@
 package dev.n7meless.heroservice.dto;
 
 import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +15,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Hero {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonProperty("name")
     @JsonSetter("localized_name")

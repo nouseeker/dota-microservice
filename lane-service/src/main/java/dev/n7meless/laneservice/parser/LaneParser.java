@@ -1,7 +1,7 @@
-package dev.n7meless.lanesservice.parser;
+package dev.n7meless.laneservice.parser;
 
-import dev.n7meless.lanesservice.dto.Lane;
-import dev.n7meless.lanesservice.dto.enums.LaneEnum;
+import dev.n7meless.laneservice.dto.Lane;
+import dev.n7meless.laneservice.dto.enums.LaneEnum;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
