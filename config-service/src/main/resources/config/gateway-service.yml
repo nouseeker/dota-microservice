@@ -1,0 +1,98 @@
+server:
+  port: 8080
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        cloud:
+          route:
+            RouteDefinitionLocator: info
+          gateway:
+            trace
+springdoc:
+  swagger-ui:
+    urls:
+      - name: counter
+        url: /v3/api-docs/counter
+      - name: hero
+        url: /v3/api-docs/hero
+      - name: economy
+        url: /v3/api-docs/economy
+      - name: farm
+        url: /v3/api-docs/farm
+      - name: impact
+        url: /v3/api-docs/impact
+      - name: lane
+        url: /v3/api-docs/lane
+    use-root-path: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password@localhost:8761/eureka
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: economy-service
+          uri: lb://economy-service
+          predicates:
+            - Path=/economy/**
+          filters:
+            - RewritePath=/economy/v3/api-docs, /v3/api-docs
+            - RewritePath=/economy(?<path>.*), /economy$\{path}
+        - id: farm-service
+          uri: lb://farm-service
+          predicates:
+            - Path=/farm/**
+          filters:
+            - RewritePath=/farm/v3/api-docs, /v3/api-docs
+            - RewritePath=/farm(?<path>.*), /farm$\{path}
+        - id: impact-service
+          uri: lb://impact-service
+          predicates:
+            - Path=/impact/**
+          filters:
+            - RewritePath=/impact/v3/api-docs, /v3/api-docs
+            - RewritePath=/impact(?<path>.*), /impact$\{path}
+        - id: lane-service
+          uri: lb://lane-service
+          predicates:
+            - Path=/lane/**
+          filters:
+            - RewritePath=/lane/v3/api-docs, /v3/api-docs
+            - RewritePath=/lane(?<path>.*), /lane$\{path}
+        - id: counter-service
+          uri: lb://counter-service
+          predicates:
+            - Path=/counter/**
+          filters:
+            - RewritePath=/counter/v3/api-docs, /v3/api-docs
+            - RewritePath=/counter(?<path>.*), /counter$\{path}
+        - id: hero-service
+          uri: lb://hero-service
+          predicates:
+            - Path=/hero/**
+          filters:
+            - RewritePath=/hero/v3/api-docs, /v3/api-docs
+            - RewritePath=/hero(?<path>.*), /hero$\{path}
+        - id: discovery-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/web
+          filters:
+            - SetPath=/
+        - id: discovery-server-static
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs

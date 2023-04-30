@@ -1,0 +1,12 @@
+server:
+  port: 0
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://user:password@localhost:8761/eureka
+caching:
+  spring:
+    lanesTTL: 10000000
+springdoc:
+  packages-to-scan: dev.n7meless.laneservice

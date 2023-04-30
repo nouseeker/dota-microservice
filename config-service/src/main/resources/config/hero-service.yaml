@@ -1,0 +1,24 @@
+server:
+  port: 0
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: n7meless
+      port: 27017
+      host: localhost
+api:
+  opendota:
+    url: https://api.opendota.com/api/
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://user:password@localhost:8761/eureka
+springdoc:
+  packages-to-scan: dev.n7meless.heroservice
+hero:
+  schedule:
+    delay: "2592000000"
