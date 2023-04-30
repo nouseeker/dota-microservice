@@ -14,32 +14,15 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class CounterService {
     private final CounterParser parser;
-    @Value("${parse.dotabuff.uri}")
-    private String dotabuffUri;
-
-    @SneakyThrows
-    public Counter getCounters(String hero) {
-        var uri = UriComponentsBuilder.fromUriString(dotabuffUri)
-                .path(hero)
-                .path("counters")
-                .toUriString();
-        Counter counter = parser.parse(uri);
-        counter.setDate("month");
-        counter.setUpdatedAt(LocalDate.now());
-        counter.setLocalizedName(hero);
-        return counter;
-    }
+    @Value("${parse.dotabuff.url}")
+    private String dotabuffUrl;
 
     @SneakyThrows
     public Counter getCountersByDate(String hero, String date) {
-        if (date == null) {
-            date = "month";
-        }
-        var uri = UriComponentsBuilder.fromUriString(dotabuffUri)
+        var uri = UriComponentsBuilder.fromUriString(dotabuffUrl)
                 .pathSegment(hero, "counters")
                 .queryParam("date", date)
                 .toUriString();
-        System.out.println(uri);
         Counter counter = parser.parse(uri);
         counter.setDate(date);
         counter.setUpdatedAt(LocalDate.now());

@@ -16,8 +16,8 @@ import java.util.List;
 public class LaneParser {
     private static final String URL = "https://www.dotabuff.com/heroes/lanes";
 
-    public List<Lane> parse(String lanePath) throws IOException {
-        var URL = urlBuilder(lanePath);
+    public List<Lane> parse(String position) throws IOException {
+        var URL = urlBuilder(position);
         Document document = connect(URL);
         Element element = document.select("tbody").first();
         List<Lane> lanes = new ArrayList<>();
@@ -36,7 +36,7 @@ public class LaneParser {
                     .presence(presence)
                     .winRate(winRate)
                     .kda(kda).gpm(gpm).xpm(xpm)
-                    .lane(LaneEnum.fromLane(lanePath))
+                    .lane(LaneEnum.fromLane(position))
                     .build();
 
             lanes.add(lane);

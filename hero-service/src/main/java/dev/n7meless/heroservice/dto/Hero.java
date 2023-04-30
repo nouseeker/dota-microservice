@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -54,6 +55,8 @@ public class Hero {
     private Integer attackTime;
     @JsonProperty("move_speed")
     private Integer moveSpeed;
+    @JsonIgnore
+    private LocalDate date;
 
     public void setImg(String img) {
         this.img = "https://api.opendota.com" + img;

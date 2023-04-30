@@ -20,8 +20,8 @@ public class LaneService {
 
     @SneakyThrows
     @Cacheable("lanes")
-    public List<Lane> getLanesByLane(String lane) {
-        return parser.parse(lane);
+    public List<Lane> getLaneByPosition(String position) {
+        return parser.parse(position);
     }
 
     @CacheEvict(value = "lanes", allEntries = true)

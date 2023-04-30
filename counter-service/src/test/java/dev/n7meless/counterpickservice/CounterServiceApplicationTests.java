@@ -31,7 +31,6 @@ public class CounterServiceApplicationTests {
 
     @Test
     public void shouldReturn200WhenSendingRequestToController() {
-        @SuppressWarnings("rawtypes")
         ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
                 "http://localhost:" + this.port + "/axe", Map.class);
 
@@ -40,7 +39,6 @@ public class CounterServiceApplicationTests {
 
     @Test
     public void shouldReturn200WhenSendingRequestToManagementEndpoint() {
-        @SuppressWarnings("rawtypes")
         ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
                 "http://localhost:" + this.mgt + "/actuator", Map.class);
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);

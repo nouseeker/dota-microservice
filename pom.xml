@@ -23,11 +23,11 @@
     </properties>
 
     <modules>
-        <module>api-gateway</module>
+        <module>gateway-service</module>
         <module>counter-service</module>
         <module>farm-service</module>
         <module>economy-service</module>
-        <module>eureka-server</module>
+        <module>discovery-service</module>
         <module>lane-service</module>
         <module>impact-service</module>
     </modules>
