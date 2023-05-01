@@ -1,9 +1,9 @@
 # Dota 2 Microservices with Spring Cloud
 ## Table of Contents
-* [About](https://github.com/n7meless/dota-microservice/edit/master/README.md#about)
-* [Technology](https://github.com/n7meless/dota-microservice/edit/master/README.md#technology)
-* [Quickstart](https://github.com/n7meless/dota-microservice/edit/master/README.md#quickstart)
-* [Architecture](https://github.com/n7meless/dota-microservice/edit/master/README.md#architecture)
+* [About](#about)
+* [Technology](#technology)
+* [Quickstart](#quickstart)
+* [Architecture](#architecture)
 ## About
   Проект создан на базе микросервисной архитектуры, где каждый микросервис - это RESTful сервис,
   с помощью которого можно получить статистику героя. Например, за любой период можно узнать у героя: 
