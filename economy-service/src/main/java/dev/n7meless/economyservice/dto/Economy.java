@@ -1,17 +1,23 @@
 package dev.n7meless.economyservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class Economy {
-    String name;
-    String imageName;
+    String hero;
+    String localizedName;
     Float gold;
     Float experience;
+
+    @JsonGetter("localized_name")
+    public String getLocalizedName() {
+        return localizedName.substring(8);
+    }
 }

@@ -20,6 +20,7 @@
         <org.springdoc.version>2.1.0</org.springdoc.version>
         <org.jsoup.version>1.15.3</org.jsoup.version>
         <org.postgresql.version>42.6.0</org.postgresql.version>
+        <org.lombok.version>1.18.26</org.lombok.version>
     </properties>
 
     <modules>
@@ -30,6 +31,8 @@
         <module>discovery-service</module>
         <module>lane-service</module>
         <module>impact-service</module>
+        <module>hero-service</module>
+        <module>config-service</module>
     </modules>
 
     <dependencyManagement>
@@ -52,13 +55,6 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>15.0.2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
                 <version>${org.springdoc.version}</version>
@@ -73,21 +69,14 @@
                 <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
                 <version>${org.springdoc.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
 
     <build>
         <plugins>
@@ -102,6 +91,11 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.3.1</version>
             </plugin>
         </plugins>
     </build>

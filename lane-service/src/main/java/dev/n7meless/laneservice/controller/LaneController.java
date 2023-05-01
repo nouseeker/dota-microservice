@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/lane")
+@RequestMapping("/lanes")
 public class LaneController {
     private final LaneService laneService;
 
@@ -29,9 +29,9 @@ public class LaneController {
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "500", description = "Internal Server Error!", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     examples = @ExampleObject(value = "{\"code\" : 500, \"status\" : \"Internal Server Error!\", \"message\" : \"Internal Server Error!\"}")))})
-    public List<Lane> getLanes(@Schema(description = "Lane hero stats. For example, mid or safe lane.",
-            example = "mid, safe, off, jungle, roaming")
-                               @RequestParam(name = "position", defaultValue = "mid") String position) {
+    public List<Lane> getLanes(@Schema(description = "Lane hero stats. For example, mid or safe positio lane.",
+            example = "mid, safe, off, jungle or roaming positions")
+                               @RequestParam(name = "pos", defaultValue = "mid") String position) {
         return laneService.getLaneByPosition(position);
     }
 }

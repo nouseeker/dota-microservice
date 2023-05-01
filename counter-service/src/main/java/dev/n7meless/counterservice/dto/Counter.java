@@ -1,7 +1,6 @@
 package dev.n7meless.counterservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 public class Counter {
     @JsonProperty("localized_name")
     String localizedName;
@@ -18,4 +16,5 @@ public class Counter {
     @JsonProperty("updated_at")
     LocalDate updatedAt;
     List<Matchup> matchups;
+
 }

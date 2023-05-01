@@ -1,17 +1,23 @@
 package dev.n7meless.farmservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class Farm {
     String name;
-    String imageName;
+    String localizedName;
     Float lastHits;
     Float denies;
+
+    @JsonGetter("localized_name")
+    public String getLocalizedName() {
+        return localizedName.substring(8);
+    }
 }

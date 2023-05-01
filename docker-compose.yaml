@@ -1,33 +1,132 @@
-version: "2.17.2"
+version: "3.7"
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
+  config-service:
+    image: n7meless/config-service:1.0-SNAPSHOT
     ports:
-      - 27017:27017
-    volumes:
-      - data:/data
+      - "8088:8088"
+    healthcheck:
+      test: curl --fail http://localhost:8088/counter/docker  || exit 1
+      interval: 5s
+      timeout: 2s
+      retries: 3
+  discovery-service:
+    image: n7meless/discovery-service:1.0-SNAPSHOT
+    ports:
+      - "8761:8761"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+    healthcheck:
+      test: curl --fail http://localhost:8761/eureka/v2/apps || exit 1
+      interval: 4s
+      timeout: 2s
+      retries: 3
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=rootuser
-      - MONGO_INITDB_ROOT_PASSWORD=rootpass
-  mongo-express:
-    image: mongo-express:latest
-    container_name: mongo-express
-    restart: always
+      SPRING_PROFILES_ACTIVE: docker
+  counter-service:
+    image: n7meless/counter-service:1.0-SNAPSHOT
     ports:
-      - 8081:8081
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
-      - ME_CONFIG_MONGODB_SERVER=mongodb
-  keycloak:
-    image: quay.io/keycloak/keycloak:18.0.0
-    container_name: laughing_visvesvaraya
-    restart: always
+      SPRING_PROFILES_ACTIVE: docker
+  economy-service:
+    image: n7meless/economy-service:1.0-SNAPSHOT
     ports:
-      - 8181:8080
-volumes:
-  data: { }
-networks:
-  default:
-    name: mongodb_network
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  farm-service:
+    image: n7meless/farm-service:1.0-SNAPSHOT
+    ports:
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+      - economy-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  hero-service:
+    image: n7meless/hero-service:1.0-SNAPSHOT
+    ports:
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+      - economy-service
+      - farm-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  impact-service:
+    image: n7meless/impact-service:1.0-SNAPSHOT
+    ports:
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+      - economy-service
+      - farm-service
+      - hero-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  lane-service:
+    image: n7meless/lane-service:1.0-SNAPSHOT
+    ports:
+      - "8080"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+      - economy-service
+      - farm-service
+      - hero-service
+      - impact-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  gateway-service:
+    image: n7meless/gateway-service:1.0-SNAPSHOT
+    ports:
+      - "8888:8888"
+    depends_on:
+      config-service:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    links:
+      - config-service
+      - discovery-service
+      - counter-service
+      - economy-service
+      - farm-service
+      - hero-service
+      - impact-service
+      - lane-service

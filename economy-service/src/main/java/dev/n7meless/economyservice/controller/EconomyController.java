@@ -41,4 +41,22 @@ public class EconomyController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(farmService.getAllEconomy(date));
     }
+
+    @GetMapping("/hero")
+    @Operation(description = "Get economy by hero name on any date")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful operation",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Economy.class))),
+            @ApiResponse(responseCode = "400", description = "Bad request!", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    examples = @ExampleObject(value = "{\"code\" : 400, \"status\" : \"Bad request!\", \"message\" : \"Hero does not exists!\"}")))})
+    public ResponseEntity<Economy> getEconomyByHeroName(@Schema(description = "Hero name in lower case",
+            example = "axe, io, magnus, clockwerk")
+                                                        @RequestParam(name = "name") String name,
+                                                        @Schema(description = "Period to receive economy all heroes",
+                                                                example = "week, month, 3month, 6month,year")
+                                                        @RequestParam(name = "date",
+                                                                defaultValue = "month") String date) {
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(farmService.getEconomyByHeroName(name, date));
+    }
 }

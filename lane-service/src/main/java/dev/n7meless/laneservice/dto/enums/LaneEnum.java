@@ -1,20 +1,20 @@
 package dev.n7meless.laneservice.dto.enums;
 
 public enum LaneEnum {
-    MIDLANE("mid"), OFFLANE("off"), JUNGLE("jungle"), ROAMING("roaming");
+    ALL(""), MIDLANE("mid"), OFFLANE("off"), JUNGLE("jungle"), ROAMING("roaming");
     private final String lane;
 
     LaneEnum(String lane) {
         this.lane = lane;
     }
 
-    public static LaneEnum fromLane(String lane) {
+    public static boolean fromLane(String lane) {
         for (LaneEnum e : LaneEnum.values()) {
             if (e.equals(lane)) {
-                return e;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     @Override

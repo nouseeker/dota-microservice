@@ -1,7 +1,6 @@
 package dev.n7meless.laneservice.parser;
 
 import dev.n7meless.laneservice.dto.Lane;
-import dev.n7meless.laneservice.dto.enums.LaneEnum;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,16 +13,13 @@ import java.util.List;
 
 @Component
 public class LaneParser {
-    private static final String URL = "https://www.dotabuff.com/heroes/lanes";
 
-    public List<Lane> parse(String position) throws IOException {
-        var URL = urlBuilder(position);
-        Document document = connect(URL);
-        Element element = document.select("tbody").first();
+    public List<Lane> parse(String uri, String position) throws IOException {
+        var tbody = getTbody(uri);
         List<Lane> lanes = new ArrayList<>();
-        for (Element el : element.getElementsByTag("tr")) {
+        for (Element el : tbody.getElementsByTag("tr")) {
             String name = el.getElementsByClass("cell-icon").first().attr("data-value");
-            String imageName = el.getElementsByClass("link-type-hero").first().attr("href");
+            String localizedName = el.getElementsByClass("link-type-hero").first().attr("href");
             Float presence = Float.parseFloat(el.getElementsByTag("td").get(2).attr("data-value"));
             Float winRate = Float.parseFloat(el.getElementsByTag("td").get(3).attr("data-value"));
             Float kda = Float.parseFloat(el.getElementsByTag("td").get(4).attr("data-value"));
@@ -31,12 +27,12 @@ public class LaneParser {
             Integer xpm = Integer.parseInt(el.getElementsByTag("td").get(6).text());
 
             var lane = Lane.builder()
-                    .imageName(imageName)
+                    .localizedName(localizedName)
                     .name(name)
                     .presence(presence)
                     .winRate(winRate)
                     .kda(kda).gpm(gpm).xpm(xpm)
-                    .lane(LaneEnum.fromLane(position))
+                    .position(position)
                     .build();
 
             lanes.add(lane);
@@ -44,16 +40,13 @@ public class LaneParser {
         return lanes;
     }
 
-    private Document connect(String currentUrl) throws IOException {
-        URL url = new URL(currentUrl);
-        return Jsoup.parse(url, 0);
+    private Element getTbody(String uri) throws IOException {
+        Document document = connect(uri);
+        return document.select("tbody").first();
     }
 
-    private String urlBuilder(String param) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(URL);
-        sb.append("?lane=");
-        sb.append(param);
-        return sb.toString();
+    private Document connect(String path) throws IOException {
+        java.net.URL url = new URL(path);
+        return Jsoup.parse(url, 0);
     }
 }

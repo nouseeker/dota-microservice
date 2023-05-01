@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class Impact {
     String name;
-    String imageName;
+    String localizedName;
     Float kda;
     Float kills;
     Float deaths;
