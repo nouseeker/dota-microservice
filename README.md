@@ -15,12 +15,14 @@
 - Сколько игр сыгранно и какой процент побед против любого героя
 ## Technology
 В данном проекте используется:
+* Java 17
+* Apache Maven
+* JUnit 5
 * Spring Framework(Boot, Web, Cloud, Webflux)
 * Springdoc
 * Jsoup
 * Json
 * Lombok
-* Java 17
 * Docker
 
 ## Quickstart
