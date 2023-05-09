@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,9 +30,12 @@ public class LaneController {
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
             @ApiResponse(responseCode = "500", description = "Internal Server Error!", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     examples = @ExampleObject(value = "{\"code\" : 500, \"status\" : \"Internal Server Error!\", \"message\" : \"Internal Server Error!\"}")))})
-    public List<Lane> getLanes(@Schema(description = "Lane hero stats. For example, mid or safe positio lane.",
+    public ResponseEntity<List<Lane>> getLanes(@Schema(description = "Lane hero stats. For example, mid or safe positio lane.",
             example = "mid, safe, off, jungle or roaming positions")
                                @RequestParam(name = "pos", defaultValue = "mid") String position) {
-        return laneService.getLaneByPosition(position);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(laneService.getLaneByPosition(position));
     }
 }
